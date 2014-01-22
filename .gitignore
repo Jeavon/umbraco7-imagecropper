@@ -163,6 +163,7 @@ TestSite/App_Plugins/ImageCropper/*
 
 TestSiteImageGen/bin/TestSiteImageGen.dll
 TestSiteImageGen/App_Plugins/ImageCropper/*
+TestSiteImageGen/media/*/Cached/*.*
 
 # =========================
 # XMl files in bin folders

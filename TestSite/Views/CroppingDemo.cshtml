@@ -29,14 +29,14 @@
         foreach (var caseStudyImage in caseStudyImagesCollection)
         {
             <h2 class="major"></h2>
-            <div style="width:50%">                
+            <div style="width:80%">                
                 @if (caseStudyImage.HasProperty("imageCrop") && caseStudyImage.HasValue("imageCrop"))
                 {
                 @*@<pre>@(caseStudyImage.GetPropertyValue<string>("imageCrop"))</pre>*@
                     <h3 class="major">Manual Crop</h3>           
                     <img src="@caseStudyImage.GetImageResizerUrl(width: 300, imageCropperValue: caseStudyImage.GetPropertyValue<string>("imageCrop"), imageCropperCropId: "MainCrop")" />
                     <h3>Manual Crop + Slimmage</h3>
-                    <img src="@caseStudyImage.GetImageResizerUrl(width: 300, imageCropperValue: caseStudyImage.GetPropertyValue<string>("imageCrop"), imageCropperCropId: "MainCrop", slimmage:true)" style="width:100%" />
+                    <img src="@caseStudyImage.GetImageResizerUrl(width: 300, imageCropperValue: caseStudyImage.GetPropertyValue<string>("imageCrop"), imageCropperCropId: "MainCrop", slimmage:true)" style="max-width:100%" />
                 }          
                 <h3>Autocropped from top left</h3>
                 <img src="@caseStudyImage.GetImageResizerUrl(width: 300, mode: ImageResizer.Mode.Crop, anchor:ImageResizer.Anchor.TopLeft )" />

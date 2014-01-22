@@ -9,9 +9,11 @@ Requirements
 1. Umbraco 7.0.1
 2. ImageProcessor.Web or Imageresizer by Imageresizing.net
 
-TestSites
+Test Sites
 ============
 username: admim, password: password
+
+**Running in WebMatrix** you need to copy the **App_Plugins** folder from the **ImageCropper** folder into the **TestSite** folder before running.
 
 Installation
 ============

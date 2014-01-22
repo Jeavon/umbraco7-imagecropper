@@ -99,6 +99,9 @@ packages/
 !TestSite/App_Data/packages
 !TestSite/Umbraco/Developer/Packages
 
+!TestSiteImageGen/App_Data/packages
+!TestSiteImageGen/Umbraco/Developer/Packages
+
 # Windows Azure Build Output
 csx
 *.build.csdef
@@ -156,16 +159,18 @@ $RECYCLE.BIN/
 .DS_Store
 
 TestSite/bin/TestSite.dll
-TestSite/bin/UltraSimpleCropper.dll
-TestSite/App_Plugins/UltraSimpleImageCropper/*
 TestSite/App_Plugins/ImageCropper/*
+
+TestSiteImageGen/bin/TestSiteImageGen.dll
+TestSiteImageGen/App_Plugins/ImageCropper/*
 
 # =========================
 # XMl files in bin folders
 # =========================
 TestSite/[Bb]in/*.xml
 TestSite/[Bb]in/*.xml
-
+TestSiteImageGen/[Bb]in/*.xml
+TestSiteImageGen/[Bb]in/*.xml
 # =========================
 # Umbraco
 # =========================
@@ -184,8 +189,26 @@ TestSite/App_Data/courier/cache/*
 TestSite/App_Data/umbraco.licensing.log.txt
 TestSite/aspnet_client/
 TestSite/App_Data/*.udt
+
+TestSiteImageGen/App_Data/umbraco.config
+TestSiteImageGen/App_Data/preview/*.config
+TestSiteImageGen/App_Data/TEMP/ClientDependency/
+TestSiteImageGen/App_Data/ClientDependency/
+TestSiteImageGen/App_Data/TEMP/ExamineIndexes/
+TestSiteImageGen/App_Data/TEMP/PluginCache/*
+TestSiteImageGen/App_Data/TEMP/SEOChecker/
+TestSiteImageGen/App_Data/Logs/*
+TestSiteImageGen/App_Data/TEMP/Razor/
+TestSiteImageGen/App_Data/FeedCache/
+TestSiteImageGen/App_Data/courier/revisions/
+TestSiteImageGen/App_Data/courier/cache/*
+TestSiteImageGen/App_Data/umbraco.licensing.log.txt
+TestSiteImageGen/aspnet_client/
+TestSiteImageGen/App_Data/*.udt
 # =========================
 # ImageRezier.Net DiskCache 
 # =========================
 TestSite/imagecache/*
 TestSite/App_Data/TEMP/Imagecache/*
+TestSiteImageGen/imagecache/*
+TestSiteImageGen/App_Data/TEMP/Imagecache/*

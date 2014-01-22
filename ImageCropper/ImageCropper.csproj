@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cropper.cs" />
+    <Compile Include="ImageGen.cs" />
     <Compile Include="ImageResizer.cs" />
     <Compile Include="Models\ImageCrop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -65,7 +66,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(ProjectDir)App_Plugins\*" "$(ProjectDir)..\TestSite\App_Plugins\*" /S /Y</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(ProjectDir)App_Plugins\*" "$(ProjectDir)..\TestSite\App_Plugins\*" /S /Y
+xcopy "$(ProjectDir)App_Plugins\*" "$(ProjectDir)..\TestSiteImageGen\App_Plugins\*" /S /Y</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -10,9 +10,10 @@ angular.module("umbraco").controller("ImageCropper",
         $scope.scaleStep = 30;
 
         String.prototype.format = function (args) {
-            var newStr = this;
+            var newStr = this;            
             for (var key in args) {
-                newStr = newStr.replace('{' + key + '}', args[key]);
+                var re = new RegExp("{" + key + "}", "g");
+                newStr = newStr.replace(re, args[key]);
             }
             return newStr;
         }
@@ -174,7 +175,7 @@ angular.module("umbraco").controller("ImageCropper",
             var url = "";
             if (parseInt($scope.resizeimagewidth) > 0) {
                 var scaleRatio = $scope.mainimagewidth / $scope.resizeimagewidth;
-                url = $scope.model.config.urlformatresize.format({ resizewidth: $scope.resizeimagewidth, x1: c.x, y1: c.y, width: w, height: h, compression: currentOptionComp, orginalx1: Math.round(c.x * scaleRatio), orginaly1: Math.round(c.y * scaleRatio), orginalx2: Math.round(c.x2 * scaleRatio), orginaly2: Math.round(c.y2 * scaleRatio) });
+                url = $scope.model.config.urlformatresize.format({ resizewidth: $scope.resizeimagewidth, x1: c.x, y1: c.y, width: w, height: h, compression: currentOptionComp, orginalx1: Math.round(c.x * scaleRatio), orginaly1: Math.round(c.y * scaleRatio), orginalx2: Math.round(c.x2 * scaleRatio), orginaly2: Math.round(c.y2 * scaleRatio), orginalwidth: Math.round($scope.cropsetting.width * scaleRatio), orginalheight: Math.round($scope.cropsetting.height * scaleRatio) });
             }
             else {
                 url = $scope.model.config.urlformat.format({ x1: c.x, y1: c.y, x2: c.x2, y2:c.y2, width: w, height: h, compression: currentOptionComp });

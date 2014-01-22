@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<imageIndex>
+  <_i>
+    <image>
+      <originalFileName>img_1879.jpg</originalFileName>
+      <size>5566781</size>
+      <dateLastModified>Wed, 22 Jan 2014 13:29:47 GMT</dateLastModified>
+      <width>3264</width>
+      <height>2448</height>
+      <cachedImage>
+        <fileName>IMG_a1fc7e8bf6cc90f71f5a8a3a9f7d3a3f3ea8883ed8ae1d12666397ce3db3befc.jpeg</fileName>
+        <dateCreated>Wed, 22 Jan 2014 16:37:47 GMT</dateCreated>
+        <imageFormat>jpeg</imageFormat>
+        <compression>90</compression>
+        <rotate>0</rotate>
+        <flip />
+        <colorMode />
+        <crop />
+        <width>800</width>
+        <height>800</height>
+        <bgColor>#FFFFFF</bgColor>
+        <transparent>True</transparent>
+        <border>0</border>
+        <borderColor>#000000</borderColor>
+        <constrain>False</constrain>
+        <pad>False</pad>
+      </cachedImage>
+      <cachedImage>
+        <fileName>IMG_a5471977fcc741fcb2ab73faa008bd155d62f99f58b7ff0f6eb4142a18a0e7af.jpeg</fileName>
+        <dateCreated>Wed, 22 Jan 2014 16:51:27 GMT</dateCreated>
+        <imageFormat>jpeg</imageFormat>
+        <compression>90</compression>
+        <rotate>0</rotate>
+        <flip />
+        <colorMode />
+        <crop>797,725,300,300</crop>
+        <width>800</width>
+        <height>800</height>
+        <bgColor>#FFFFFF</bgColor>
+        <transparent>True</transparent>
+        <border>0</border>
+        <borderColor>#000000</borderColor>
+        <constrain>False</constrain>
+        <pad>False</pad>
+        <align>left</align>
+        <valign>middle</valign>
+      </cachedImage>
+      <cachedImage>
+        <fileName>IMG_acd74258953c3c35478585be28556b1019ed77f88237a51b8a8db264590fbed7.jpeg</fileName>
+        <dateCreated>Wed, 22 Jan 2014 17:01:30 GMT</dateCreated>
+        <imageFormat>jpeg</imageFormat>
+        <compression>90</compression>
+        <rotate>0</rotate>
+        <flip />
+        <colorMode />
+        <crop>1674,372,1139,1139</crop>
+        <width>300</width>
+        <height>300</height>
+        <bgColor>#FFFFFF</bgColor>
+        <transparent>True</transparent>
+        <border>0</border>
+        <borderColor>#000000</borderColor>
+        <constrain>False</constrain>
+        <pad>False</pad>
+        <align>left</align>
+        <valign>middle</valign>
+      </cachedImage>
+      <cachedImage>
+        <fileName>IMG_f8b0b123e895494534ed6508d6679cc87d13263b10303797880cf36f664ae025.jpeg</fileName>
+        <dateCreated>Wed, 22 Jan 2014 17:07:00 GMT</dateCreated>
+        <imageFormat>jpeg</imageFormat>
+        <compression>90</compression>
+        <rotate>0</rotate>
+        <flip />
+        <colorMode />
+        <crop>474,444,1139,1139</crop>
+        <width>300</width>
+        <height>300</height>
+        <bgColor>#FFFFFF</bgColor>
+        <transparent>True</transparent>
+        <border>0</border>
+        <borderColor>#000000</borderColor>
+        <constrain>False</constrain>
+        <pad>False</pad>
+        <align>left</align>
+        <valign>middle</valign>
+      </cachedImage>
+      <cachedImage>
+        <fileName>IMG_a91df6eb6fcfe60f31445e07193f9501842e6674e2a8b462d8378d3602328418.jpeg</fileName>
+        <dateCreated>Wed, 22 Jan 2014 17:29:56 GMT</dateCreated>
+        <imageFormat>jpeg</imageFormat>
+        <compression>90</compression>
+        <rotate>0</rotate>
+        <flip />
+        <colorMode />
+        <crop>474,444,1139,1139</crop>
+        <width>600</width>
+        <height>600</height>
+        <bgColor>#FFFFFF</bgColor>
+        <transparent>True</transparent>
+        <border>0</border>
+        <borderColor>#000000</borderColor>
+        <constrain>False</constrain>
+        <pad>False</pad>
+        <align>left</align>
+        <valign>middle</valign>
+      </cachedImage>
+      <cachedImage>
+        <fileName>IMG_79d3aaa770f82fa3444563a8d4e5c56a8dbcaabfd78b5cd7f68fb3dce5e421a1.jpeg</fileName>
+        <dateCreated>Wed, 22 Jan 2014 17:32:29 GMT</dateCreated>
+        <imageFormat>jpeg</imageFormat>
+        <compression>90</compression>
+        <rotate>0</rotate>
+        <flip />
+        <colorMode />
+        <crop>474,444,1139,1139</crop>
+        <width>480</width>
+        <height>480</height>
+        <bgColor>#FFFFFF</bgColor>
+        <transparent>True</transparent>
+        <border>0</border>
+        <borderColor>#000000</borderColor>
+        <constrain>False</constrain>
+        <pad>False</pad>
+        <align>left</align>
+        <valign>middle</valign>
+      </cachedImage>
+      <cachedImage>
+        <fileName>IMG_faf16c3cb5d27adf8d13781a48904043e0f9f38952d9af4ef38ac61e667e55f9.jpeg</fileName>
+        <dateCreated>Wed, 22 Jan 2014 17:33:30 GMT</dateCreated>
+        <imageFormat>jpeg</imageFormat>
+        <compression>90</compression>
+        <rotate>0</rotate>
+        <flip />
+        <colorMode />
+        <crop>474,444,1139,1139</crop>
+        <width>320</width>
+        <height>320</height>
+        <bgColor>#FFFFFF</bgColor>
+        <transparent>True</transparent>
+        <border>0</border>
+        <borderColor>#000000</borderColor>
+        <constrain>False</constrain>
+        <pad>False</pad>
+        <align>left</align>
+        <valign>middle</valign>
+      </cachedImage>
+    </image>
+  </_i>
+</imageIndex>

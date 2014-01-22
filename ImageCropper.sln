@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{0020B6
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSiteImageGen", "TestSiteImageGen\TestSiteImageGen.csproj", "{368163E6-D0B0-4D0A-A4A1-F6891C752D25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{C84D544A-F5AC-4791-96EA-CE60AF1FBC06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C84D544A-F5AC-4791-96EA-CE60AF1FBC06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C84D544A-F5AC-4791-96EA-CE60AF1FBC06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{368163E6-D0B0-4D0A-A4A1-F6891C752D25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{368163E6-D0B0-4D0A-A4A1-F6891C752D25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{368163E6-D0B0-4D0A-A4A1-F6891C752D25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{368163E6-D0B0-4D0A-A4A1-F6891C752D25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

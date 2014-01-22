@@ -258,6 +258,7 @@
     <Content Include="bin\x86\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
     <Content Include="bin\amd64\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
     <Content Include="Views\CroppingDemo.cshtml" />
+    <Content Include="Views\umbHomePage.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

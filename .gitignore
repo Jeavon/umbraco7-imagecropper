@@ -165,6 +165,11 @@ TestSiteImageGen/bin/TestSiteImageGen.dll
 TestSiteImageGen/App_Plugins/ImageCropper/*
 TestSiteImageGen/media/*/Cached/*.*
 
+TestSiteImageProcessor/bin/TestSiteImageProcessor.dll
+TestSiteImageProcessor/App_Plugins/ImageCropper/*
+TestSiteImageProcessor/App_Data/cache/*
+
+
 # =========================
 # XMl files in bin folders
 # =========================
@@ -172,6 +177,8 @@ TestSite/[Bb]in/*.xml
 TestSite/[Bb]in/*.xml
 TestSiteImageGen/[Bb]in/*.xml
 TestSiteImageGen/[Bb]in/*.xml
+TestSiteImageProcessor/[Bb]in/*.xml
+TestSiteImageProcessor/[Bb]in/*.xml
 # =========================
 # Umbraco
 # =========================
@@ -206,6 +213,22 @@ TestSiteImageGen/App_Data/courier/cache/*
 TestSiteImageGen/App_Data/umbraco.licensing.log.txt
 TestSiteImageGen/aspnet_client/
 TestSiteImageGen/App_Data/*.udt
+
+TestSiteImageProcessor/App_Data/umbraco.config
+TestSiteImageProcessor/App_Data/preview/*.config
+TestSiteImageProcessor/App_Data/TEMP/ClientDependency/
+TestSiteImageProcessor/App_Data/ClientDependency/
+TestSiteImageProcessor/App_Data/TEMP/ExamineIndexes/
+TestSiteImageProcessor/App_Data/TEMP/PluginCache/*
+TestSiteImageProcessor/App_Data/TEMP/SEOChecker/
+TestSiteImageProcessor/App_Data/TEMP/Razor/
+TestSiteImageProcessor/App_Data/FeedCache/
+TestSiteImageProcessor/App_Data/courier/revisions/
+TestSiteImageProcessor/App_Data/courier/cache/*
+TestSiteImageProcessor/App_Data/umbraco.licensing.log.txt
+TestSiteImageProcessor/aspnet_client/
+TestSiteImageProcessor/App_Data/*.udt
+
 # =========================
 # ImageRezier.Net DiskCache 
 # =========================

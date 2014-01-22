@@ -1,0 +1,70 @@
+﻿@using ImageCropper
+@inherits UmbracoTemplatePage
+@{
+    Layout = "umbLayout.cshtml";
+
+    // If the editor has not explicitly provided the "Page title" property page 
+    // then just show the name of the page otherwise show the provided title
+    var pageTitle = string.IsNullOrWhiteSpace(CurrentPage.Title)
+        ? CurrentPage.Name
+        : CurrentPage.Title;    
+}
+<div id="main-wrapper">
+    <div id="main" class="container">
+        <div class="row">
+            <div class="9u skel-cell-mainContent">
+                <div class="content content-left">
+                    <!-- Content -->
+                    <article class="is-page-content">
+                        <header>
+                            <h2>@pageTitle</h2>
+                        </header>
+                        <section>
+@{
+    if (Model.Content.HasValue("caseStudyImages"))
+    {
+        var caseStudyImagesList = Model.Content.GetPropertyValue<string>("caseStudyImages").Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse);
+        var caseStudyImagesCollection = Umbraco.TypedMedia(caseStudyImagesList).Where(x => x != null);
+
+        foreach (var caseStudyImage in caseStudyImagesCollection)
+        {
+            <h2 class="major"></h2>
+            <div style="width:50%">                
+                @if (caseStudyImage.HasProperty("imageCrop") && caseStudyImage.HasValue("imageCrop"))
+                {
+                @*@<pre>@(caseStudyImage.GetPropertyValue<string>("imageCrop"))</pre>*@
+                    <h3 class="major">Manual Crop</h3>           
+                    <img src="@caseStudyImage.GetImageResizerUrl(width: 300, imageCropperValue: caseStudyImage.GetPropertyValue<string>("imageCrop"), imageCropperCropId: "MainCrop")" />
+                    <h3>Manual Crop + Slimmage</h3>
+                    <img src="@caseStudyImage.GetImageResizerUrl(width: 300, imageCropperValue: caseStudyImage.GetPropertyValue<string>("imageCrop"), imageCropperCropId: "MainCrop", slimmage:true)" style="width:100%" />
+                }          
+                <h3>Autocropped from top left</h3>
+                <img src="@caseStudyImage.GetImageResizerUrl(width: 300, mode: ImageResizer.Mode.Crop, anchor:ImageResizer.Anchor.TopLeft )" />
+                
+                <h3>Autocropped from top left + Slimmage</h3>
+                <img src="@caseStudyImage.GetImageResizerUrl(width: 300, mode: ImageResizer.Mode.Crop, anchor:ImageResizer.Anchor.TopLeft, slimmage:true )" />
+            </div>
+        }
+    }
+}
+                        </section>                           
+                    </article>
+                    <!-- /Content -->
+                </div>
+            </div>
+            <div class="3u">
+                <div class="sidebar">
+                    <!-- Sidebar -->
+                    @{ Html.RenderPartial("umbLatestNewsWidget"); }
+                    <!-- /Sidebar -->
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="12u">
+                @{ Html.RenderPartial("umbFeatures"); }
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Main -->

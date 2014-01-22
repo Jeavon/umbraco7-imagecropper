@@ -7,7 +7,11 @@ Using the ImageProcessor the images are manipulated on-the-fly.
 Requirements
 ============
 1. Umbraco 7.0.1
-2. ImageProcessor.Web
+2. ImageProcessor.Web or Imageresizer by Imageresizing.net
+
+TestSites
+============
+username: admim, password: password
 
 Installation
 ============

@@ -10,9 +10,9 @@
 		prevalues: {
 			fields: [
 				{
-					label: "Url format noresize",
+					label: "Crop coordinates format",
 					description: "",
-					key: "urlformat",
+					key: "cropcoords",
 					view: "requiredfield",
 					validation: [
 						{
@@ -22,9 +22,9 @@
 				},
 
 				{
-					label: "Url format resize",
+					label: "Preview url format",
 					description: "",
-					key: "urlformatresize",
+					key: "previewurlformat",
 					view: "requiredfield",
 					validation: [
 						{
@@ -42,8 +42,8 @@
 			]
 		},
 		defaultConfig: {
-	    urlformat: "crop={x1},{y1},{width},{height}&quality={compression}",
-		urlformatresize: "width={resizewidth}&crop={x1},{y1},{width},{height}&quality={compression}"
+	    cropcoords: "{x1},{y1},{width},{height}",
+		previewurlformat: "{mainimageurl}?crop={x1},{y1},{width},{height}&width={cropwidth}&quality={compression}"
 		}
    }
     ]

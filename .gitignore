@@ -221,6 +221,7 @@ TestSiteImageProcessor/App_Data/ClientDependency/
 TestSiteImageProcessor/App_Data/TEMP/ExamineIndexes/
 TestSiteImageProcessor/App_Data/TEMP/PluginCache/*
 TestSiteImageProcessor/App_Data/TEMP/SEOChecker/
+TestSiteImageProcessor/App_Data/Logs/*
 TestSiteImageProcessor/App_Data/TEMP/Razor/
 TestSiteImageProcessor/App_Data/FeedCache/
 TestSiteImageProcessor/App_Data/courier/revisions/

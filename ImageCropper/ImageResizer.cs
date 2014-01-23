@@ -66,8 +66,6 @@ namespace ImageCropper
                 var imageResizerUrl = new StringBuilder();
                 imageResizerUrl.Append(imageUrl);
 
-                bool widthSet = false, heightSet = false;
-
                 if (!string.IsNullOrEmpty(imageCropperValue) && imageCropperValue.Length > 2)
                 {
                     var allTheCrops = imageCropperValue.GetImageCrops();
@@ -76,15 +74,7 @@ namespace ImageCropper
                         var crop = imageCropperCropId != null
                                        ? allTheCrops.Find(x => x.Id == imageCropperCropId)
                                        : allTheCrops.First();
-                        if (crop.ProcessorUrl.Contains("width="))
-                        {
-                            widthSet = true;
-                        }
-                        if (crop.ProcessorUrl.Contains("height="))
-                        {
-                            heightSet = true;
-                        }
-                        imageResizerUrl.Append("?mode=" + Mode.Crop.ToString().ToLower() + "&" + crop.ProcessorUrl);
+                        imageResizerUrl.Append("?mode=" + Mode.Crop.ToString().ToLower() + "&crop=(" + crop.CropCoOrds + ")");
                     } 
                 }
                 else
@@ -100,11 +90,12 @@ namespace ImageCropper
                         imageResizerUrl.Append("&anchor=" + anchor.ToString().ToLower());
                     }
                 }
-                if (width != null && !widthSet)
+
+                if (width != null)
                 {
                     imageResizerUrl.Append("&width=" + width);
                 }
-                if (height != null && !heightSet)
+                if (height != null)
                 {
                     imageResizerUrl.Append("&height=" + height);
                 }

@@ -172,15 +172,17 @@ angular.module("umbraco").controller("ImageCropper",
             }
             var w = $scope.cropsetting.width;
             var h = $scope.cropsetting.height;
-            var url = "";
+            var previewurl = "";
+            var cropcoords = "";
+            var scaleRatio = 1;
             if (parseInt($scope.resizeimagewidth) > 0) {
-                var scaleRatio = $scope.mainimagewidth / $scope.resizeimagewidth;
-                url = $scope.model.config.urlformatresize.format({ resizewidth: $scope.resizeimagewidth, x1: c.x, y1: c.y, width: w, height: h, compression: currentOptionComp, orginalx1: Math.round(c.x * scaleRatio), orginaly1: Math.round(c.y * scaleRatio), orginalx2: Math.round(c.x2 * scaleRatio), orginaly2: Math.round(c.y2 * scaleRatio), orginalwidth: Math.round($scope.cropsetting.width * scaleRatio), orginalheight: Math.round($scope.cropsetting.height * scaleRatio) });
+                 scaleRatio = $scope.mainimagewidth / $scope.resizeimagewidth;
             }
-            else {
-                url = $scope.model.config.urlformat.format({ x1: c.x, y1: c.y, x2: c.x2, y2:c.y2, width: w, height: h, compression: currentOptionComp });
-            }
-            $scope.model.value.push({ id: $scope.cropsetting.id, x1: c.x, y1: c.y, x2: c.x2, y2: c.y2, widthoriginal: $scope.mainimagewidth, heightoriginal: $scope.mainimageheight, widthdisplay: $scope.cropsetting.width, heightdisplay: $scope.cropsetting.height, compression: currentOptionComp, processorurl: url, resizewidth: $scope.resizeimagewidth });
+
+            cropcoords = $scope.model.config.cropcoords.format({ compression: currentOptionComp, x1: Math.round(c.x * scaleRatio), y1: Math.round(c.y * scaleRatio), x2: Math.round(c.x2 * scaleRatio), y2: Math.round(c.y2 * scaleRatio), width: Math.round($scope.cropsetting.width * scaleRatio), height: Math.round($scope.cropsetting.height * scaleRatio), cropwidth: $scope.cropsetting.width, cropheight: $scope.cropsetting.height });
+            previewurl = $scope.model.config.previewurlformat.format({mainimageurl:$scope.mainimageurl, compression: currentOptionComp, x1: Math.round(c.x * scaleRatio), y1: Math.round(c.y * scaleRatio), x2: Math.round(c.x2 * scaleRatio), y2: Math.round(c.y2 * scaleRatio), width: Math.round($scope.cropsetting.width * scaleRatio), height: Math.round($scope.cropsetting.height * scaleRatio), cropwidth: $scope.cropsetting.width, cropheight: $scope.cropsetting.height });
+
+            $scope.model.value.push({ id: $scope.cropsetting.id, x1: c.x, y1: c.y, x2: c.x2, y2: c.y2, widthoriginal: $scope.mainimagewidth, heightoriginal: $scope.mainimageheight, widthdisplay: $scope.cropsetting.width, heightdisplay: $scope.cropsetting.height, compression: currentOptionComp, cropcoords: cropcoords, previewurl: previewurl });
             updPreview();
             //console.log(JSON.stringify($scope.model.value));
         }

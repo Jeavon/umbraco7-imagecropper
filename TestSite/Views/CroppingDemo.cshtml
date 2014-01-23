@@ -32,7 +32,7 @@
             <div style="width:80%">                
                 @if (caseStudyImage.HasProperty("imageCrop") && caseStudyImage.HasValue("imageCrop"))
                 {
-                @*@<pre>@(caseStudyImage.GetPropertyValue<string>("imageCrop"))</pre>*@
+                @*<pre>@(caseStudyImage.GetPropertyValue<string>("imageCrop"))</pre>*@
                     <h3 class="major">Manual Crop</h3>           
                     <img src="@caseStudyImage.GetImageResizerUrl(width: 300, imageCropperValue: caseStudyImage.GetPropertyValue<string>("imageCrop"), imageCropperCropId: "MainCrop")" />
                     <h3>Manual Crop + Slimmage</h3>

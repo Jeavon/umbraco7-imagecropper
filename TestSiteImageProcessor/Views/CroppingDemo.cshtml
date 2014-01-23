@@ -35,16 +35,16 @@
                 @if (caseStudyImage.HasProperty("imageCrop") && caseStudyImage.HasValue("imageCrop"))
                 {
                 @*<pre>@(caseStudyImage.GetPropertyValue<string>("imageCrop"))</pre>*@
-                    <h3 class="major">Manual Crop</h3>           
+                        <h3 class="major">Manual Crop</h3>           
                 
-                        var jsonCrops = caseStudyImage.GetPropertyValue<string>("imageCrop");
+                    var jsonCrops = caseStudyImage.GetPropertyValue<string>("imageCrop");
 
                         if (jsonCrops.IsJson())
                         {
                             var imageCrops = jsonCrops.GetImageCrops();
                             foreach (var ic in imageCrops)
                             {
-                                <img src="@caseStudyImage.Url?@ic.ProcessorUrl" alt="your alt here" />
+                                <img src="@caseStudyImage.Url?@ic.PreviewUrl" alt="your alt here" />
                             }
                         }
                    
@@ -55,7 +55,7 @@
                             var imageCrops = jsonCrops.GetImageCrops();
                             foreach (var ic in imageCrops)
                             {
-                                <img src="@caseStudyImage.Url?@ic.ProcessorUrl&slimmage=true" alt="your alt here" />
+                                <img src="@caseStudyImage.Url?@ic.PreviewUrl&slimmage=true" alt="your alt here" />
                             }
                         }
                     

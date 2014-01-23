@@ -13,6 +13,7 @@
         public string HeightDisplay { get; set; }
         public string ResizeWidth { get; set; }
         public string Compression { get; set; }
-        public string ProcessorUrl { get; set; }
+        public string CropCoOrds { get; set; }
+        public string PreviewUrl { get; set; }
     }
 }

@@ -3,8 +3,8 @@
         <ul class="unstyled">
             <li ng-repeat="crop in model.value">
                 <h4>{{crop.id}} ({{crop.widthdisplay}}x{{crop.heightdisplay}}, quality: {{crop.compression}})</h4>
-                <a href="{{mainimageurl}}?{{crop.processorurl}}" target="_blank">
-                    <img src="{{mainimageurl}}?{{crop.processorurl}}" />
+                <a href="{{crop.previewurl}}" target="_blank">
+                    <img src="{{crop.previewurl}}" />
                 </a>
             </li>
         </ul>

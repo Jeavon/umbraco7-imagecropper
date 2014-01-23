@@ -43,16 +43,13 @@ namespace ImageCropper
                     var crop = imageCropperCropId != null
                                    ? allTheCrops.Find(x => x.Id == imageCropperCropId)
                                    : allTheCrops.First();
-                    if (crop.ProcessorUrl.Contains("width="))
-                    {
-                        widthSet = true;
-                    }
-                    if (crop.ProcessorUrl.Contains("height="))
-                    {
-                        heightSet = true;
-                    }
-                    imageGenUrl.Append("&"+crop.ProcessorUrl);
+
+                    imageGenUrl.Append("&crop=" + crop.CropCoOrds);
                 }
+            }
+            if (width != null)
+            {
+                imageGenUrl.Append("&width=" + width);
             }
             if (slimmage)
             {

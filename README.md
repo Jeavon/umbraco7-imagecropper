@@ -22,7 +22,7 @@ Installation
 2. Drop the folders from this repository into the corresponding folders of an Umbraco V7.0.1 instance.
 3. Create a new data type of type "Image Cropper" in the "Developer" section in the Umbraco backoffice.
 4. Add the predefined crops settings.
-5. Configure the ProcessorUrl (see below)
+5. Configure the crop coordinates and preview urls (see below)
 5. Assign the data type to an image mediatype in the "Settings" section of the Umbraco backoffice.
 6. Add some crops to a media item and save.
 7. Use the extension class to get the crops you have made in the property editor.
@@ -32,29 +32,23 @@ Processor Urls
 ===========
 **ImageProcessor**
 
-Url format noresize: `crop={x1},{y1},{width},{height}&width={width}&quality={compression}`
+Crop coordinates format: `{x1},{y1},{width},{height}`
 
-Url format resize: `crop={orginalx1},{orginaly1},{orginalwidth},{orginalheight}&width={width}&quality={compression}`
+Preview url format: `{mainimageurl}?crop={x1},{y1},{width},{height}&width={cropwidth}&quality={compression}`
 
 **ImageResizer**
 
-Url format noresize: `crop=({x1},{y1},{x2},{y2})&quality={compression}`
+Crop coordinates format: `{x1},{y1},{x2},{y2}`
 
-Url format resize: `width={width}&crop=({orginalx1},{orginaly1},{orginalx2},{orginaly2})&quality={compression}`
+Preview url format: `{mainimageurl}?crop=({x1},{y1},{x2},{y2})&width={cropwidth}&quality={compression}`
 
 **ImageGen**
 
-Url format noresize: `crop={x1},{y1},{width},{height}&width={width}&compression={compression}`
+Crop coordinates format: `{x1},{y1},{width},{height}`
 
-Url format resize: `crop={orginalx1},{orginaly1},{orginalwidth},{orginalheight}&width={width}&compression={compression}`
+Preview url format: `/imagegen.ashx?image={mainimageurl}&crop={x1},{y1},{width},{height}&width={cropwidth}&compression={compression}`
 
 Disclaimers
 ===========
 
-Initial release, there will probably be errors.
-
-
-Contact me
-==========
-
-If you have tips or questions, give me a shout on twitter [@azertie](http://www.twitter.com/azertie).
+Alpha release, there will probably be errors.

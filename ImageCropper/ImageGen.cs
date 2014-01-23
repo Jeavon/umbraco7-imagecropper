@@ -7,24 +7,50 @@ using System.Threading.Tasks;
 namespace ImageCropper
 {
     using Umbraco.Core.Models;
+    using Umbraco.Web;
 
     public static class ImageGen
     {
+
+        public enum Align
+        {
+            Center,
+            Right,
+            Near,
+            Far
+        }
+
+        public enum ColorMode
+        {
+            Color,
+            GrayScale,
+            Sepia
+        }
+
         public static string GetImageGenUrl(
             this IPublishedContent mediaItem,
             int? width = null,
             int? height = null,
-            string imageCropperValue = null,
+            Align? align = null,
+            ColorMode? colorMode = null,
+            string imageCropperAlias = null,
             string imageCropperCropId = null,
             bool slimmage = false)
         {
-            return mediaItem != null ? GetImageResizerUrl(mediaItem.Url, width, height, imageCropperValue, imageCropperCropId, slimmage) : string.Empty;
+            string imageCropperValue = null;
+            if (imageCropperAlias != null && mediaItem.HasProperty(imageCropperAlias) && mediaItem.HasValue(imageCropperAlias))
+            {
+                imageCropperValue = mediaItem.GetPropertyValue<string>(imageCropperAlias);
+            }
+            return mediaItem != null ? GetImageResizerUrl(mediaItem.Url, width, height, align, colorMode, imageCropperValue, imageCropperCropId, slimmage) : string.Empty;
         }
 
         public static string GetImageResizerUrl(
             this string imageUrl,
             int? width = null,
             int? height = null,
+            Align? align = null,
+            ColorMode? colorMode = null,
             string imageCropperValue = null,
             string imageCropperCropId = null,
             bool slimmage = false)
@@ -50,6 +76,14 @@ namespace ImageCropper
             if (width != null)
             {
                 imageGenUrl.Append("&width=" + width);
+            }
+            if (align != null)
+            {
+                imageGenUrl.Append("&align=" + align.ToString().ToLower());
+            }
+            if (colorMode != null)
+            {
+                imageGenUrl.Append("&colorMode=" + colorMode.ToString().ToLower());
             }
             if (slimmage)
             {

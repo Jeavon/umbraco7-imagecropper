@@ -4,6 +4,7 @@ using System.Text;
 namespace ImageCropper
 {
     using Umbraco.Core.Models;
+    using Umbraco.Web;
 
     public static class ImageResizer
     {
@@ -43,10 +44,15 @@ namespace ImageCropper
             int? height = null,
             Mode? mode = null,
             Anchor? anchor = null,
-            string imageCropperValue = null,
+            string imageCropperAlias = null,
             string imageCropperCropId = null,
             bool slimmage = false)
         {
+            string imageCropperValue = null;
+            if (imageCropperAlias != null && mediaItem.HasProperty(imageCropperAlias) && mediaItem.HasValue(imageCropperAlias))
+            {
+                imageCropperValue = mediaItem.GetPropertyValue<string>(imageCropperAlias);
+            }
             return mediaItem != null ? GetImageResizerUrl(mediaItem.Url, width, height, mode, anchor, imageCropperValue, imageCropperCropId, slimmage) : string.Empty;
         }
 
@@ -66,7 +72,7 @@ namespace ImageCropper
                 var imageResizerUrl = new StringBuilder();
                 imageResizerUrl.Append(imageUrl);
 
-                if (!string.IsNullOrEmpty(imageCropperValue) && imageCropperValue.Length > 2)
+                if (!string.IsNullOrEmpty(imageCropperValue) && imageCropperValue.IsJson())
                 {
                     var allTheCrops = imageCropperValue.GetImageCrops();
                     if (allTheCrops != null && allTheCrops.Any())

@@ -31,6 +31,7 @@ namespace ImageCropper
             this IPublishedContent mediaItem,
             int? width = null,
             int? height = null,
+            int? quality = null,
             Align? align = null,
             ColorMode? colorMode = null,
             string imageCropperAlias = null,
@@ -42,13 +43,14 @@ namespace ImageCropper
             {
                 imageCropperValue = mediaItem.GetPropertyValue<string>(imageCropperAlias);
             }
-            return mediaItem != null ? GetImageResizerUrl(mediaItem.Url, width, height, align, colorMode, imageCropperValue, imageCropperCropId, slimmage) : string.Empty;
+            return mediaItem != null ? GetImageResizerUrl(mediaItem.Url, width, height, quality, align, colorMode, imageCropperValue, imageCropperCropId, slimmage) : string.Empty;
         }
 
         public static string GetImageResizerUrl(
             this string imageUrl,
             int? width = null,
             int? height = null,
+            int? quality = null,
             Align? align = null,
             ColorMode? colorMode = null,
             string imageCropperValue = null,
@@ -73,6 +75,10 @@ namespace ImageCropper
                     imageGenUrl.Append("&crop=" + crop.CropCoOrds);
                 }
             }
+            if (quality != null)
+            {
+                imageGenUrl.Append("&quality=" + quality);
+            }
             if (width != null)
             {
                 imageGenUrl.Append("&width=" + width);
@@ -87,6 +93,10 @@ namespace ImageCropper
             }
             if (slimmage)
             {
+                if (quality == null)
+                {
+                    imageGenUrl.Append("&quality=90");  
+                }
                 imageGenUrl.Append("&slimmage=true");
             }
 

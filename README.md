@@ -48,6 +48,53 @@ Crop coordinates format: `{x1},{y1},{width},{height}`
 
 Preview url format: `/imagegen.ashx?image={mainimageurl}&crop={x1},{y1},{width},{height}&width={cropwidth}&quality={compression}`
 
+Razor Samples
+===========
+**ImageProcessor**
+
+Add `@using ImageCropper.ImageProcessor` at the top of your view
+
+For a manual crop, with a propertyAlias of "imageCrop" and a cropId of "mainCrop"
+
+	@if (caseStudyImage.HasProperty("imageCrop") && caseStudyImage.HasValue("imageCrop"))
+	{
+	<img src="@caseStudyImage.GetImageProcessorUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
+	} 
+
+To enable Slimmage for adaptive width (ensure slimmage.js is included in your View)
+
+	    <img src="@caseStudyImage.GetImageProcessorUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop", slimmage:true)" />  
+
+**ImageResizer**
+
+Add `@using ImageCropper.ImageResizer` at the top of your view
+
+For a manual crop, with a propertyAlias of "imageCrop" and a cropId of "mainCrop"
+
+	@if (caseStudyImage.HasProperty("imageCrop") && caseStudyImage.HasValue("imageCrop"))
+	{
+	<img src="@caseStudyImage.GetImageResizerUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
+	}
+
+To enable Slimmage for adaptive width (ensure slimmage.js is included in your View)
+
+	    <img src="@caseStudyImage.GetImageResizerUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop", slimmage:true)" />
+
+**ImageGen**
+
+Add `@using ImageCropper.ImageGen` at the top of your view
+
+For a manual crop, with a propertyAlias of "imageCrop" and a cropId of "mainCrop"
+
+	@if (caseStudyImage.HasProperty("imageCrop") && caseStudyImage.HasValue("imageCrop"))
+	{
+	<img src="@caseStudyImage.GetImageGenUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
+	} 
+
+To enable Slimmage for adaptive width (ensure slimmage.js is included in your View)
+
+	    <img src="@caseStudyImage.GetImageGenUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop", slimmage:true)" />
+
 Disclaimers
 ===========
 

@@ -66,8 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cropper.cs" />
-    <Compile Include="ImageGen.cs" />
-    <Compile Include="ImageResizer.cs" />
+    <Compile Include="ImageGen\ImageGen.cs" />
+    <Compile Include="ImageProcessor\ImageProcessor.cs" />
+    <Compile Include="ImageResizer\ImageResizer.cs" />
     <Compile Include="Models\ImageCrop.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

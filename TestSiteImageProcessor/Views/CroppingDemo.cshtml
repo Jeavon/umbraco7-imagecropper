@@ -1,6 +1,5 @@
-﻿@using ImageCropper
-@using ImageCropper.Models
-@using ImageProcessor.Processors
+﻿@using ImageCropper.ImageProcessor
+
 @inherits UmbracoTemplatePage
 @{
     Layout = "umbLayout.cshtml";
@@ -34,35 +33,15 @@
             <div style="width:80%">                
                 @if (caseStudyImage.HasProperty("imageCrop") && caseStudyImage.HasValue("imageCrop"))
                 {
-                @*<pre>@(caseStudyImage.GetPropertyValue<string>("imageCrop"))</pre>*@
-                        <h3 class="major">Manual Crop</h3>           
-                
-                    var jsonCrops = caseStudyImage.GetPropertyValue<string>("imageCrop");
-
-                        if (jsonCrops.IsJson())
-                        {
-                            var imageCrops = jsonCrops.GetImageCrops();
-                            foreach (var ic in imageCrops)
-                            {
-                                <img src="@caseStudyImage.Url?@ic.PreviewUrl" alt="your alt here" />
-                            }
-                        }
+                    <h3 class="major">Manual Crop</h3>           
+                    <img src="@caseStudyImage.GetImageProcessorUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
                    
                     <h3>Manual Crop + Slimmage</h3>
-                    
-                        if (jsonCrops.IsJson())
-                        {
-                            var imageCrops = jsonCrops.GetImageCrops();
-                            foreach (var ic in imageCrops)
-                            {
-                                <img src="@caseStudyImage.Url?@ic.PreviewUrl&slimmage=true" alt="your alt here" />
-                            }
-                        }
-                    
+  
+                    <img src="@caseStudyImage.GetImageProcessorUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop", slimmage:true)" />
+
                 }          
-                <h3>Autocropped from top left</h3>
-                
-                <h3>Autocropped from top left + Slimmage</h3>
+
             </div>
         }
     }

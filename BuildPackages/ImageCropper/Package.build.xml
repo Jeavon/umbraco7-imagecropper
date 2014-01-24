@@ -59,16 +59,17 @@
     <ItemGroup>
       <PackageFile Include="$(RootDir)\Package.xml" />
       <AppPlugin Include="$(CoreProjectDir)\App_Plugins\**\*.*" />
+      <Scripts Include="$(CoreProjectDir)\scripts\*.js" />
       <BinFiles Include="$(CoreProjectDir)\bin\Debug\*.dll" />
     </ItemGroup>
     
     <Copy SourceFiles="@(PackageFile)" DestinationFolder="$(BuildDir)" />       
     <Copy SourceFiles="@(BinFiles)" DestinationFolder="$(BuildDir)\bin" />
+    <Copy SourceFiles="@(Scripts)" DestinationFolder="$(BuildDir)\scripts" />
     <Copy SourceFiles="@(AppPlugin)"
 DestinationFiles="@(AppPlugin->'$(BuildDir)\App_Plugins\%(RecursiveDir)%(Filename)%(Extension)')" />
 
   </Target>
-
     
 	<!-- MANIFEST -->
 	<Target Name="Manifest" DependsOnTargets="PrepairFiles">

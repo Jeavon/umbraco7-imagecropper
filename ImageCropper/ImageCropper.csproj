@@ -99,6 +99,7 @@
     <Content Include="App_Plugins\ImageCropper\jquery.color.js" />
     <Content Include="App_Plugins\ImageCropper\jquery.jcrop.min.css" />
     <Content Include="App_Plugins\ImageCropper\jquery.jcrop.min.js" />
+    <Content Include="scripts\slimmage.min.js" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Plugins\ImageCropper\package.manifest" />

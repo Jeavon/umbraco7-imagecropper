@@ -390,8 +390,7 @@ namespace ImageCropper.Umbraco
             bool result = false;
 
             //Get attribute values of xmlData
-            string path, name;
-            if (!getAttribute(xmlData, "path", out path)) return result;
+            string name;
             name = getAttributeDefault(xmlData, "name", null);
 
             //Create a new xml document

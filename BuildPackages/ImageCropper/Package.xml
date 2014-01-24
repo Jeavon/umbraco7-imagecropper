@@ -17,7 +17,12 @@
 			<website>https://github.com/Jeavon/umbraco7-imagecropper</website>
 		</author>
         <readme>
-          <![CDATA[Media Cropper for Umbraco v7 plus helper extension methods for image processors]]>
+          <![CDATA[Media Cropper for Umbraco v7 plus helper extension methods for image processors. 
+          
+          This package does not include a image processor such as ImageProcessor.Web, ImageResizer or ImageGen, you will need to install one.
+          
+          More instructions here https://github.com/Jeavon/umbraco7-imagecropper
+          ]]>
         </readme>
 	</info>
 

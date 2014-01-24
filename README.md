@@ -72,7 +72,7 @@ For a manual crop, with a propertyAlias of "imageCrop" and a cropId of "mainCrop
 	<img src="@caseStudyImage.GetImageProcessorUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
 	} 
 
-To enable Slimmage for adaptive width (ensure slimmage.min.js is included in your View  and SlimResponse is installed)
+To enable Slimmage for adaptive width (ensure slimmage.min.js is included in your View)
 
     <img src="@caseStudyImage.GetImageProcessorUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop", slimmage:true)" />  
 
@@ -87,7 +87,7 @@ For a manual crop, with a propertyAlias of "imageCrop" and a cropId of "mainCrop
 	<img src="@caseStudyImage.GetImageResizerUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
 	}
 
-To enable Slimmage for adaptive width (ensure slimmage.min.js is included in your View  and SlimResponse is installed)
+To enable Slimmage for adaptive width (ensure slimmage.min.js is included in your View)
 
     <img src="@caseStudyImage.GetImageResizerUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop", slimmage:true)" />
 
@@ -102,7 +102,7 @@ For a manual crop, with a propertyAlias of "imageCrop" and a cropId of "mainCrop
 	<img src="@caseStudyImage.GetImageGenUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
 	} 
 
-To enable Slimmage for adaptive width (ensure slimmage.min.js is included in your View  and SlimResponse is installed)
+To enable Slimmage for adaptive width (ensure slimmage.min.js is included in your View)
 
     <img src="@caseStudyImage.GetImageGenUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop", slimmage:true)" />
 

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<umbPackage>
+	<info>
+		<package>
+			<name>Umbraco v7 Image Cropper</name>
+			<version>0.0.0</version>
+			<license url="http://www.opensource.org/licenses/mit-license.php">MIT license</license>
+			<url>http://our.umbraco.org/projects/developer-tools/v7imagecropper</url>
+			<requirements>
+				<major>0</major>
+				<minor>0</minor>
+				<patch>0</patch>
+			</requirements>
+		</package>
+		<author>
+			<name>Jeavon Leopold, Joost van den Berg and William Phillips</name>
+			<website>https://github.com/Jeavon/umbraco7-imagecropper</website>
+		</author>
+        <readme>
+          <![CDATA[Media Cropper for Umbraco v7 plus helper extension methods for image processors]]>
+        </readme>
+	</info>
+
+	<DocumentTypes />
+	<Templates />
+	<Stylesheets />
+	<Macros />
+	<DictionaryItems />
+	<Languages />
+	<DataTypes />
+
+    <Actions>
+      <Action runat="install" undo="false" alias="Umbundle.AddAssemblyBinding" name="HtmlAgilityPack" publicKeyToken="bd319b19eaf3b43a" oldVersion="0.0.0.0-1.4.6.0" newVersion="1.4.6.0" />
+      <Action runat="install" undo="true" alias="Umbundle.AddHttpModule" name="SlimResponseModule" position="end" type="Imazen.SlimResponse.SlimResponseModule, Imazen.SlimResponse" />
+    </Actions>
+
+  <control />
+
+	<files />
+
+</umbPackage>

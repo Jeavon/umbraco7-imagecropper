@@ -18,6 +18,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSiteImageGen", "TestSit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSiteImageProcessor", "TestSiteImageProcessor\TestSiteImageProcessor.csproj", "{4E33EEDF-6555-4ECC-BBB4-42E8A46B721A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildPackage", "BuildPackage", "{C3FF90DC-CFA3-4F4C-B294-0429DA9A12E6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ImageCropper", "ImageCropper", "{F5E51ABB-BA35-4466-AA9A-6B88CEFD884C}"
+	ProjectSection(SolutionItems) = preProject
+		BuildPackages\ImageCropper\Package.build.cmd = BuildPackages\ImageCropper\Package.build.cmd
+		BuildPackages\ImageCropper\Package.build.xml = BuildPackages\ImageCropper\Package.build.xml
+		BuildPackages\ImageCropper\Package.xml = BuildPackages\ImageCropper\Package.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,5 +52,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F5E51ABB-BA35-4466-AA9A-6B88CEFD884C} = {C3FF90DC-CFA3-4F4C-B294-0429DA9A12E6}
 	EndGlobalSection
 EndGlobal

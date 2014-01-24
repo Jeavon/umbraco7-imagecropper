@@ -40,7 +40,7 @@ Preview url format: `{mainimageurl}?crop={x1},{y1},{width},{height}&width={cropw
 
 Crop coordinates format: `{x1},{y1},{x2},{y2}`
 
-Preview url format: `{mainimageurl}?crop=({x1},{y1},{x2},{y2})&width={cropwidth}&quality={compression}`
+Preview url format: `{mainimageurl}?crop=({x1},{y1},{x2},{y2})&width={cropwidth}&quality={compression}&cache=no`
 
 **ImageGen**
 
@@ -61,7 +61,7 @@ For a manual crop, with a propertyAlias of "imageCrop" and a cropId of "mainCrop
 	<img src="@caseStudyImage.GetImageProcessorUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
 	} 
 
-To enable Slimmage for adaptive width (ensure slimmage.js is included in your View)
+To enable Slimmage for adaptive width (ensure slimmage.js is included in your View  and SlimResponse is installed)
 
 	    <img src="@caseStudyImage.GetImageProcessorUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop", slimmage:true)" />  
 
@@ -76,7 +76,7 @@ For a manual crop, with a propertyAlias of "imageCrop" and a cropId of "mainCrop
 	<img src="@caseStudyImage.GetImageResizerUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
 	}
 
-To enable Slimmage for adaptive width (ensure slimmage.js is included in your View)
+To enable Slimmage for adaptive width (ensure slimmage.js is included in your View  and SlimResponse is installed)
 
 	    <img src="@caseStudyImage.GetImageResizerUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop", slimmage:true)" />
 
@@ -91,7 +91,7 @@ For a manual crop, with a propertyAlias of "imageCrop" and a cropId of "mainCrop
 	<img src="@caseStudyImage.GetImageGenUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
 	} 
 
-To enable Slimmage for adaptive width (ensure slimmage.js is included in your View)
+To enable Slimmage for adaptive width (ensure slimmage.js is included in your View  and SlimResponse is installed)
 
 	    <img src="@caseStudyImage.GetImageGenUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop", slimmage:true)" />
 

@@ -27,6 +27,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ImageCropper", "ImageCroppe
 		BuildPackages\ImageCropper\Package.xml = BuildPackages\ImageCropper\Package.xml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IRUmbraco", "IRUmbraco\IRUmbraco.csproj", "{1F120B41-2BD6-4438-B319-CA3DE5156D82}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IRUmbraco", "IRUmbraco", "{02424FAE-BE4A-4E72-A2E1-D43217A7684D}"
+	ProjectSection(SolutionItems) = preProject
+		BuildPackages\IRUmbraco\Package.build.cmd = BuildPackages\IRUmbraco\Package.build.cmd
+		BuildPackages\IRUmbraco\Package.build.xml = BuildPackages\IRUmbraco\Package.build.xml
+		BuildPackages\IRUmbraco\Package.xml = BuildPackages\IRUmbraco\Package.xml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,11 +58,16 @@ Global
 		{4E33EEDF-6555-4ECC-BBB4-42E8A46B721A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E33EEDF-6555-4ECC-BBB4-42E8A46B721A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E33EEDF-6555-4ECC-BBB4-42E8A46B721A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F120B41-2BD6-4438-B319-CA3DE5156D82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F120B41-2BD6-4438-B319-CA3DE5156D82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F120B41-2BD6-4438-B319-CA3DE5156D82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F120B41-2BD6-4438-B319-CA3DE5156D82}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F5E51ABB-BA35-4466-AA9A-6B88CEFD884C} = {C3FF90DC-CFA3-4F4C-B294-0429DA9A12E6}
+		{02424FAE-BE4A-4E72-A2E1-D43217A7684D} = {C3FF90DC-CFA3-4F4C-B294-0429DA9A12E6}
 	EndGlobalSection
 EndGlobal

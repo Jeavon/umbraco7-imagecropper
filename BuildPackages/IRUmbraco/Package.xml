@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<umbPackage>
+	<info>
+		<package>
+			<name>ImageResizer Umbraco</name>
+			<version>0.0.0</version>
+			<license url="http://imageresizing.net/licenses/freedom">Resizer Freedom license</license>
+			<url>http://imageresizing.net/</url>
+			<requirements>
+				<major>0</major>
+				<minor>0</minor>
+				<patch>0</patch>
+			</requirements>
+		</package>
+		<author>
+			<name>Nathanael Jones (Jeavon Leopold for the Umbraco Installer only!)</name>
+			<website>http://imageresizing.net/</website>
+		</author>
+        <readme>
+          <![CDATA[Installs ImageResizer by http://imageresizing.net/ into Umbraco
+          ]]>
+        </readme>
+	</info>
+
+	<DocumentTypes />
+	<Templates />
+	<Stylesheets />
+	<Macros />
+	<DictionaryItems />
+	<Languages />
+	<DataTypes />
+
+    <Actions>
+      <Action runat="install" undo="true" alias="IRBundle.AddHttpModule" name="ImageResizingModule" position="end" type="ImageResizer.InterceptModule" />
+      <Action runat="install" undo="true" alias="IRBundle.AddConfigSection" name="resizer" type="ImageResizer.ResizerSection" requirePermission="false" />
+    </Actions>
+
+  <control />
+
+	<files />
+
+</umbPackage>

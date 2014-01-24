@@ -46,7 +46,7 @@ Preview url format: `{mainimageurl}?crop=({x1},{y1},{x2},{y2})&width={cropwidth}
 
 Crop coordinates format: `{x1},{y1},{width},{height}`
 
-Preview url format: `/imagegen.ashx?image={mainimageurl}&crop={x1},{y1},{width},{height}&width={cropwidth}&quality={compression}`
+Preview url format: `/imagegen.ashx?image={mainimageurl}&crop={x1},{y1},{width},{height}&width={cropwidth}&quality={compression}&nocache=true`
 
 Razor Samples
 ===========

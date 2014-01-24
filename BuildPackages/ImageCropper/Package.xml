@@ -5,7 +5,7 @@
 			<name>Umbraco v7 Image Cropper</name>
 			<version>0.0.0</version>
 			<license url="http://www.opensource.org/licenses/mit-license.php">MIT license</license>
-			<url>http://our.umbraco.org/projects/developer-tools/v7imagecropper</url>
+			<url>http://our.umbraco.org/projects/backoffice-extensions/v7-image-cropper</url>
 			<requirements>
 				<major>0</major>
 				<minor>0</minor>

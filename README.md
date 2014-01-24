@@ -2,7 +2,7 @@ Image Cropper Property Editor
 ============================================
 
 The Image Cropper property editor allows backoffice users to position pre-defined image crops on media items.
-Using the ImageProcessor the images are manipulated on-the-fly.
+Using ImageProcessor, ImageResizer or ImageGen the images are manipulated on-the-fly.
 
 Requirements
 ============

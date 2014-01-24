@@ -7,7 +7,7 @@ Using ImageProcessor, ImageResizer or ImageGen the images are manipulated on-the
 Requirements
 ============
 1. Umbraco 7.0.2
-2. **[ImageProcessor.Web](http://our.umbraco.org/projects/collaboration/imageprocessor)** or **[Imageresizer](http://imageresizing.net/)** by Imageresizing.net or **[ImageGen](http://our.umbraco.org/projects/website-utilities/imagegen)**
+2. **[ImageProcessor.Web](http://our.umbraco.org/projects/collaboration/imageprocessor)** or **[ImageResizer](http://our.umbraco.org/FileDownload?id=10333)** by Imageresizing.net or **[ImageGen](http://our.umbraco.org/projects/website-utilities/imagegen)**
 
 Test Sites
 ============
@@ -18,7 +18,7 @@ username: admim, password: password
 Package Installation
 ============
 
-1. Install a server side image processor ([ImageProcessor](http://our.umbraco.org/projects/collaboration/imageprocessor), Imageresizer or [ImageGen](http://our.umbraco.org/projects/website-utilities/imagegen))
+1. Install a server side image processor ([ImageProcessor](http://our.umbraco.org/projects/collaboration/imageprocessor), [ImageResizer](http://our.umbraco.org/FileDownload?id=10333) or [ImageGen](http://our.umbraco.org/projects/website-utilities/imagegen))
 2. Install the ImageCropper package
 3. Clear your browser cache (otherwise you will get JS errors)
 3. Create a new data type of type "Image Cropper" in the "Developer" section in the Umbraco backoffice.

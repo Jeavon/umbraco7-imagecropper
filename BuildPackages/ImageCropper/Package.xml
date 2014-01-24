@@ -35,8 +35,8 @@
 	<DataTypes />
 
     <Actions>
-      <Action runat="install" undo="false" alias="Umbundle.AddAssemblyBinding" name="HtmlAgilityPack" publicKeyToken="bd319b19eaf3b43a" oldVersion="0.0.0.0-1.4.6.0" newVersion="1.4.6.0" />
-      <Action runat="install" undo="true" alias="Umbundle.AddHttpModule" name="SlimResponseModule" position="end" type="Imazen.SlimResponse.SlimResponseModule, Imazen.SlimResponse" />
+      <Action runat="install" undo="false" alias="CropBundle.AddAssemblyBinding" name="HtmlAgilityPack" publicKeyToken="bd319b19eaf3b43a" oldVersion="0.0.0.0-1.4.6.0" newVersion="1.4.6.0" />
+      <Action runat="install" undo="true" alias="CropBundle.AddHttpModule" name="SlimResponseModule" position="end" type="Imazen.SlimResponse.SlimResponseModule, Imazen.SlimResponse" />
     </Actions>
 
   <control />

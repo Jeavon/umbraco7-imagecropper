@@ -22,7 +22,7 @@ namespace ImageCropper.Umbraco
     {
         public string Alias()
         {
-            return "Umbundle.AddAssemblyBinding";
+            return "CropBundle.AddAssemblyBinding";
         }
 
         public bool Execute(string packageName, XmlNode xmlData)
@@ -211,7 +211,7 @@ namespace ImageCropper.Umbraco
         /// <returns>The Alias in string format</returns>
         public string Alias()
         {
-            return "Umbundle.AddHttpModule";
+            return "CropBundle.AddHttpModule";
         }
 
         /// <summary>

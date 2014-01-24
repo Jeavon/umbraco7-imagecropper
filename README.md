@@ -28,6 +28,11 @@ Package Installation
 6. Add some media items and set the crops
 7. Use the extension class to display the crops you have made in the property editor.
 
+Installation video (shows how to resolve below issue also!)
+ 
+[
+http://www.screenr.com/NV8N](http://www.screenr.com/NV8N)
+
 **Known issue:**
 
 If you add a cropper property (or any additional property) to an existing media type and try to use it you may get a YSOD. To resolve the issue stop your application and delete all Examine Indexes (all sub folders within \App_Data\TEMP\ExamineIndexes), start up again and it should now be ok.
@@ -60,6 +65,7 @@ Razor Samples
 
 There are extension methods for each processor included in the package for use with the cropper or standalone.
 
+Video showing how to enable Slimmage [http://www.screenr.com/2V8N](http://www.screenr.com/2V8N)
 
 **ImageProcessor**
 

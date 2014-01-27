@@ -91,12 +91,10 @@ angular.module("umbraco").controller("ImageCropper",
                 var w = $scope.cropsetting.width;
                 var h = $scope.cropsetting.height;
 
-                
-
                 var srcw = $scope.mainimagewidth;
                 var srch = $scope.mainimageheight;
 
-                if ((w < srcw) && (h < srch)) {
+                if ((w <= srcw) && (h <= srch)) {
                     
                     var x1 = 0, y1 = 0, x2 = 0, y2 = 0, croppedWidth = 0;
                     for (i = 0; i < $scope.model.value.length; i++) {

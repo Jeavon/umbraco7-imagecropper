@@ -35,7 +35,11 @@ http://www.screenr.com/NV8N](http://www.screenr.com/NV8N)
 
 **Known issue:**
 
-If you add a cropper property (or any additional property) to an existing media type and try to use it you may get a YSOD. To resolve the issue stop your application and delete all Examine Indexes (all sub folders within \App_Data\TEMP\ExamineIndexes), start up again and it should now be ok.
+If you add a cropper property (or any additional property) to an existing media type and try to use it you may get a YSOD.
+
+We have added a extension method `.HasPropertyAndValue("propertyAlias")` which will attempt to workaround the issue automatically.  It is also useful as it will check for empty Json values where the crops have been removed and return false where a normal HasValue would have returned true.
+
+To fully resolve the issue stop your application and delete all Examine Indexes (all sub folders within \App_Data\TEMP\ExamineIndexes), start up again and it should now be ok, this will fully recreate the media cache.
 
 There is an Umbraco issue logged for this [http://issues.umbraco.org/issue/U4-4129 ](http://issues.umbraco.org/issue/U4-4129)
 
@@ -73,7 +77,7 @@ Add `@using ImageCropper.ImageProcessor` at the top of your view
 
 For a manual crop, with a propertyAlias of "imageCrop" and a cropId of "mainCrop"
 
-	@if (caseStudyImage.HasProperty("imageCrop") && caseStudyImage.HasValue("imageCrop"))
+    @if (caseStudyImage.HasPropertyAndValue("imageCrop"))
 	{
 	<img src="@caseStudyImage.GetImageProcessorUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
 	} 
@@ -88,7 +92,7 @@ Add `@using ImageCropper.ImageResizer` at the top of your view
 
 For a manual crop, with a propertyAlias of "imageCrop" and a cropId of "mainCrop"
 
-	@if (caseStudyImage.HasProperty("imageCrop") && caseStudyImage.HasValue("imageCrop"))
+    @if (caseStudyImage.HasPropertyAndValue("imageCrop"))
 	{
 	<img src="@caseStudyImage.GetImageResizerUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
 	}
@@ -103,7 +107,7 @@ Add `@using ImageCropper.ImageGen` at the top of your view
 
 For a manual crop, with a propertyAlias of "imageCrop" and a cropId of "mainCrop"
 
-	@if (caseStudyImage.HasProperty("imageCrop") && caseStudyImage.HasValue("imageCrop"))
+    @if (caseStudyImage.HasPropertyAndValue("imageCrop"))
 	{
 	<img src="@caseStudyImage.GetImageGenUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
 	} 

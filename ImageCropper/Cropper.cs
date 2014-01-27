@@ -53,7 +53,7 @@
             return imageCrops;
         }
 
-        internal static bool HasPropertyValueDoubleCheck(IPublishedContent publishedContent, string propertyAlias)
+        internal static bool HasPropertyValueDoubleCheck(this IPublishedContent publishedContent, string propertyAlias)
         {            
             try
             {
@@ -75,7 +75,7 @@
             return false;
         }
 
-        internal static string GetPropertyValueHack(IPublishedContent publishedContent, string propertyAlias)
+        internal static string GetPropertyValueHack(this IPublishedContent publishedContent, string propertyAlias)
         {
             string propertyValue = null;
             try

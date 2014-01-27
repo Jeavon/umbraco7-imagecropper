@@ -26,9 +26,9 @@ namespace ImageCropper.ImageProcessor
         {            
             string imageCropperValue = null;
 
-            if (Cropper.HasPropertyValueDoubleCheck(mediaItem, imageCropperAlias))
+            if (mediaItem.HasPropertyValueDoubleCheck(imageCropperAlias))
             {
-                imageCropperValue = Cropper.GetPropertyValueHack(mediaItem, imageCropperAlias);
+                imageCropperValue = mediaItem.GetPropertyValueHack(imageCropperAlias);
             }
 
             return mediaItem != null ? GetImageResizerUrl(mediaItem.Url, width, height, quality, mode, anchor, imageCropperValue, imageCropperCropId, furtherOptions, slimmage) : string.Empty;

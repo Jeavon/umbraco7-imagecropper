@@ -30,16 +30,22 @@
         {
             <h2 class="major"></h2>
             <div style="width:80%">                
-                @if (caseStudyImage.HasProperty("imageCrop") && caseStudyImage.HasValue("imageCrop"))
+                @if (caseStudyImage.HasPropertyAndValue("imageCrop"))
                 {
                 @*<pre>@(caseStudyImage.GetPropertyValue<string>("imageCrop"))</pre>*@
-                    <h3 class="major">Manual Crop</h3>           
+                    <h3 class="major">Manual Crop</h3>
                     <img src="@caseStudyImage.GetImageGenUrl(300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
                     <h3>Manual Crop + Slimmage</h3>
                     <img src="@caseStudyImage.GetImageGenUrl(300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop", text: "#h5yr", fontColor: "ff0000", slimmage: true)" style="max-width: 100%" />
-                }          
-                <h3>Standard ImageGen with Sepia mode</h3>
-                <img src="@caseStudyImage.GetImageGenUrl(300, colorMode:ImageGen.ColorMode.Sepia)" style="max-width: 100%" />
+                }
+                else
+                {
+                    <h3>No Crop defined - lets go auto</h3>
+                    <img src="@caseStudyImage.GetImageGenUrl(300, align:ImageGen.Align.Near, vAlign:ImageGen.VAlign.Top)" />
+                }     
+                     
+                <h3 class="major">Standard ImageGen with Sepia mode</h3>
+                <img src="@caseStudyImage.GetImageGenUrl(300, colorMode:ImageGen.ColorMode.Sepia)" />
 
             </div>
         }

@@ -31,7 +31,7 @@
         {
             <h2 class="major"></h2>
             <div style="width:80%">                
-                @if (caseStudyImage.HasPropertyValueDoubleCheck("imageCrop"))
+                @if (caseStudyImage.HasPropertyAndValue("imageCrop"))
                 {
                     <h3 class="major">Manual Crop</h3>
                     <img src="@caseStudyImage.GetImageProcessorUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />

@@ -7,9 +7,9 @@ namespace ImageCropper.ImageProcessor
 {
     public static class ImageProcessor
     {
-        public static bool HasPropertyValueDoubleCheck(this IPublishedContent publishedContent, string propertyAlias)
+        public static bool HasPropertyAndValue(this IPublishedContent publishedContent, string propertyAlias)
         {
-            return Cropper.HasPropertyValueDoubleCheck(publishedContent, propertyAlias);
+            return Cropper.HasPropertyAndValue(publishedContent, propertyAlias);
         }
 
         public static string GetImageProcessorUrl(
@@ -26,7 +26,7 @@ namespace ImageCropper.ImageProcessor
         {            
             string imageCropperValue = null;
 
-            if (mediaItem.HasPropertyValueDoubleCheck(imageCropperAlias))
+            if (mediaItem.HasPropertyAndValue(imageCropperAlias))
             {
                 imageCropperValue = mediaItem.GetPropertyValueHack(imageCropperAlias);
             }

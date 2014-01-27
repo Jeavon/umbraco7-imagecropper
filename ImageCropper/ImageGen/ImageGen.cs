@@ -9,6 +9,10 @@ namespace ImageCropper.ImageGen
 
     public static class ImageGen
     {
+        public static bool HasPropertyAndValue(this IPublishedContent publishedContent, string propertyAlias)
+        {
+            return Cropper.HasPropertyAndValue(publishedContent, propertyAlias);
+        }
 
         /// <summary>
         /// Generate an ImageGen URL from a Media Item
@@ -85,9 +89,9 @@ namespace ImageCropper.ImageGen
             bool slimmage = false)
         {
             string imageCropperValue = null;
-            if (imageCropperAlias != null && mediaItem.HasProperty(imageCropperAlias) && mediaItem.HasValue(imageCropperAlias))
+            if (mediaItem.HasPropertyAndValue(imageCropperAlias))
             {
-                imageCropperValue = mediaItem.GetPropertyValue<string>(imageCropperAlias);
+                imageCropperValue = mediaItem.GetPropertyValueHack(imageCropperAlias);
             }
             return mediaItem != null ? GetImageResizerUrl(mediaItem.Url, width, height, quality, align, allowUpsizing, antiAlias, border, borderColor, colorMode, constrain, flip, fontSize, fontStyle, font, fontColor, format, lineHeight, maxHeight, maxWidth, noCache, overlayMargin, pad, rotate, transparent, vAlign, altImage, bgColor, overlayImage, text, imageCropperValue, imageCropperCropId, furtherOptions, slimmage) : string.Empty;
         }

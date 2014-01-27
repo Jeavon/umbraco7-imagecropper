@@ -53,22 +53,33 @@
             return imageCrops;
         }
 
-        internal static bool HasPropertyValueDoubleCheck(this IPublishedContent publishedContent, string propertyAlias)
+        internal static bool HasPropertyAndValue(this IPublishedContent publishedContent, string propertyAlias)
         {            
             try
             {
                 if (propertyAlias != null && publishedContent.HasProperty(propertyAlias)
                     && publishedContent.HasValue(propertyAlias))
                 {
+                    var propertyAliasValue = publishedContent.GetPropertyValue<string>(propertyAlias);
+                    if (propertyAliasValue.IsJson() && propertyAliasValue.Length <= 2)
+                    {
+                        return false;
+                    }
                     return true;
                 }
             }
             catch (Exception ex)
             {
-                LogHelper.Warn<IPublishedContent>("Media cache is not happy - http://issues.umbraco.org/issue/U4-4146");
+                LogHelper.Warn<IPublishedContent>("The cache unicorn is not happy with node id: " + publishedContent.Id + " - http://issues.umbraco.org/issue/U4-4146");
                 var cropsProperty = publishedContent.Properties.FirstOrDefault(x => x.PropertyTypeAlias == propertyAlias);
+                
                 if (cropsProperty != null && !string.IsNullOrEmpty(cropsProperty.Value.ToString()))
                 {
+                    var propertyAliasValue = cropsProperty.Value.ToString();
+                    if (propertyAliasValue.IsJson() && propertyAliasValue.Length <= 2)
+                    {
+                        return false;
+                    }
                     return true;
                 }
             }

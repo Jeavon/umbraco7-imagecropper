@@ -76,6 +76,8 @@ angular.module("umbraco").controller("ImageCropper",
             destroyJcrop();
             $scope.resizeimageheight = 0;
             $scope.resizeimagewidth = 0;
+
+            loadScale();
         }
 
         $scope.selectAction = function () {
@@ -83,15 +85,19 @@ angular.module("umbraco").controller("ImageCropper",
         };
 
         function selectorclick() {
+            
             if ($scope.cropsetting != null) {
                 destroyJcrop();
                 var w = $scope.cropsetting.width;
                 var h = $scope.cropsetting.height;
 
-                var srcw = $scope.resizeimagewidth == 0 ? $scope.mainimagewidth : $scope.resizeimagewidth;
-                var srch = $scope.resizeimageheight == 0 ? $scope.mainimageheight : $scope.resizeimageheight;
+                
+
+                var srcw = $scope.mainimagewidth;
+                var srch = $scope.mainimageheight;
 
                 if ((w < srcw) && (h < srch)) {
+                    
                     var x1 = 0, y1 = 0, x2 = 0, y2 = 0, croppedWidth = 0;
                     for (i = 0; i < $scope.model.value.length; i++) {
                         if ($scope.model.value[i].id === $scope.cropsetting.id) {
@@ -101,6 +107,7 @@ angular.module("umbraco").controller("ImageCropper",
                             y2 = $scope.model.value[i].y2;
                             croppedWidth = $scope.model.value[i].resizewidth;
                         }
+                        
                     }
 
                     if (croppedWidth > 0) {
@@ -111,8 +118,36 @@ angular.module("umbraco").controller("ImageCropper",
                         $scope.resizeimagewidth = croppedWidth;
                         $scope.resizeimageheight = newheight;
 
-                        $('#mainimage').attr("style", "width:" + croppedWidth + "px; height:" + newheight + "px");
+                       
+
+
                         $('#mainimage').attr("title", "width:" + croppedWidth + "px - height:" + newheight + "px");
+
+                        checkWidth();
+
+                        function checkWidth() {
+                            
+                            if ($('#mainimage').width() !== croppedWidth) {
+                                $('#mainimage').attr("style", "width:" + croppedWidth + "px; height:" + newheight + "px");
+                                setTimeout(checkWidth, 100);
+                                return false;
+                            } else {
+                                return true;
+                            }
+                        }
+
+                    } else {
+                        //set width and height to scaled size
+                        waitScale();
+                        function waitScale() {
+                            if ($('#mainimage').width() !== $scope.resizeimagewidth) {
+                                $('#mainimage').attr("style", "width:" + $scope.resizeimagewidth + "px; height:" + $scope.resizeimageheight + "px");
+                                setTimeout(waitScale, 100);
+                                return false;
+                            } else {
+                                return true;
+                            }
+                        }
                     }
 
                     createJcrop(w, h);
@@ -182,9 +217,65 @@ angular.module("umbraco").controller("ImageCropper",
             cropcoords = $scope.model.config.cropcoords.format({ compression: currentOptionComp, x1: Math.round(c.x * scaleRatio), y1: Math.round(c.y * scaleRatio), x2: Math.round(c.x2 * scaleRatio), y2: Math.round(c.y2 * scaleRatio), width: Math.round($scope.cropsetting.width * scaleRatio), height: Math.round($scope.cropsetting.height * scaleRatio), cropwidth: $scope.cropsetting.width, cropheight: $scope.cropsetting.height });
             previewurl = $scope.model.config.previewurlformat.format({mainimageurl:$scope.mainimageurl, compression: currentOptionComp, x1: Math.round(c.x * scaleRatio), y1: Math.round(c.y * scaleRatio), x2: Math.round(c.x2 * scaleRatio), y2: Math.round(c.y2 * scaleRatio), width: Math.round($scope.cropsetting.width * scaleRatio), height: Math.round($scope.cropsetting.height * scaleRatio), cropwidth: $scope.cropsetting.width, cropheight: $scope.cropsetting.height });
 
-            $scope.model.value.push({ id: $scope.cropsetting.id, x1: c.x, y1: c.y, x2: c.x2, y2: c.y2, widthoriginal: $scope.mainimagewidth, heightoriginal: $scope.mainimageheight, widthdisplay: $scope.cropsetting.width, heightdisplay: $scope.cropsetting.height, compression: currentOptionComp, cropcoords: cropcoords, previewurl: previewurl });
+            $scope.model.value.push({ id: $scope.cropsetting.id, x1: c.x, y1: c.y, x2: c.x2, y2: c.y2, widthoriginal: $scope.mainimagewidth, heightoriginal: $scope.mainimageheight, widthdisplay: $scope.cropsetting.width, heightdisplay: $scope.cropsetting.height, compression: currentOptionComp, resizewidth: $scope.resizeimagewidth, cropcoords: cropcoords, previewurl: previewurl });
             updPreview();
             //console.log(JSON.stringify($scope.model.value));
+        }
+
+        function loadScale() {
+
+            var ratio = $scope.mainimageheight / $scope.mainimagewidth,
+                cWidth = $(".umb-panel-body").width() - 300,
+                cHeight = $(window).height() - 300;
+
+            if ($scope.mainimagewidth >= $scope.mainimageheight) {
+
+                if ($scope.mainimagewidth > cWidth) {
+                    setWidth();
+                }
+
+            } else if ($scope.mainimagewidth < $scope.mainimageheight) {
+
+                if ($scope.mainimageheight > cHeight) {
+                    setHeight();
+                }
+
+            }
+
+            function setWidth() {
+                var x = cWidth,
+                    y = $scope.mainimagewidth,
+                    z = x / y * 100,
+                    p = z / 100 * y,
+                    h = Math.round(p * ratio),
+                    w = 0;
+
+                if (h > cHeight) {
+                    var perc = Math.abs((cHeight / h * 100));
+                    h = Math.round(perc / 100 * h);
+                    w = Math.round(h / ratio);
+                    $('#mainimage').css("height", h); // Needed to overrite css height rule
+                } else {
+                    w = z / 100 * y;
+                }
+
+
+                $scope.resizeimagewidth = w;
+            };
+
+            function setHeight() {
+                var x = cHeight,
+                    y = $scope.mainimageheight,
+                    z = x / y * 100,
+                    p = Math.round((z / 100 * y) - 100),
+                    w = Math.round(p / ratio);
+
+
+                $('#mainimage').css("height", p); // Needed to overrite css height rule
+
+                $scope.resizeimagewidth = w;
+            };
+
         }
 
         if (!angular.isArray($scope.model.value)) {
@@ -237,59 +328,9 @@ angular.module("umbraco").controller("ImageCropper",
                 $scope.mainimageratio = $scope.mainimagewidth / $scope.mainimageheight;
                 $scope.mainimageurl = myMediaUrl;
 
-                var ratio = $scope.mainimageheight / $scope.mainimagewidth,
-                    cWidth = $(".umb-panel-body").width() - 300,
-                    cHeight = $(window).height() - 300;
+                loadScale();
 
-                if ($scope.mainimagewidth >= $scope.mainimageheight) {
-
-                    if ($scope.mainimagewidth > cWidth) {
-                        setWidth();
-                    }
-
-                }
-                else if ($scope.mainimagewidth < $scope.mainimageheight) {
-
-                    if ($scope.mainimageheight > cHeight) {
-                        setHeight();
-                    }
-
-                }
-
-                function setWidth() {
-                    var x = cWidth,
-                        y = $scope.mainimagewidth,
-                        z = x / y * 100,
-                        p = z / 100 * y,
-                        h = Math.floor(p * ratio),
-                        w = 0;
-
-                    if (h > cHeight) {
-                        var perc = Math.abs((cHeight / h * 100));
-                        h = perc / 100 * h;
-                        w = Math.floor(h / ratio);
-                        $('#mainimage').css("height", h); // Needed to overrite css height rule
-                    } else {
-                        w = z / 100 * y;
-                    }
-
-                    $scope.scaledWidth = w;
-                    $scope.scaledHeight = h;
-                    $scope.resizeimagewidth = w;
-                };
-
-                function setHeight() {
-                    var x = cHeight,
-                        y = $scope.mainimageheight,
-                        z = x / y * 100,
-                        p = (z / 100 * y) - 100,
-                        w = Math.floor(p / ratio);
-
-                    $scope.scaledHeight = p;
-                    $('#mainimage').css("height", p); // Needed to overrite css height rule
-
-                    $scope.resizeimagewidth = w;
-                };
+                
 
             });
         });

@@ -31,16 +31,18 @@
         {
             <h2 class="major"></h2>
             <div style="width:80%">                
-                @if (caseStudyImage.HasProperty("imageCrop") && caseStudyImage.HasValue("imageCrop"))
+                @if (caseStudyImage.HasPropertyValueDoubleCheck("imageCrop"))
                 {
-                    <h3 class="major">Manual Crop</h3>           
+                    <h3 class="major">Manual Crop</h3>
                     <img src="@caseStudyImage.GetImageProcessorUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
-                   
                     <h3>Manual Crop + Slimmage</h3>
-  
-                    <img src="@caseStudyImage.GetImageProcessorUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop", slimmage:true)" />
-
-                }          
+                    <img src="@caseStudyImage.GetImageProcessorUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop", slimmage: true)" />
+                }
+                else
+                {
+                    <h3 class="major">No Crop defined - lets go auto</h3>
+                    <img src="@caseStudyImage.GetImageProcessorUrl(width: 300, mode:ImageProcessor.Mode.Crop, anchor:ImageProcessor.Anchor.Left)" /> 
+                }      
 
             </div>
         }

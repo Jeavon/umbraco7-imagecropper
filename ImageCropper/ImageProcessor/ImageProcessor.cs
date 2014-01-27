@@ -7,6 +7,11 @@ namespace ImageCropper.ImageProcessor
 {
     public static class ImageProcessor
     {
+        public static bool HasPropertyValueDoubleCheck(this IPublishedContent publishedContent, string propertyAlias)
+        {
+            return Cropper.HasPropertyValueDoubleCheck(publishedContent, propertyAlias);
+        }
+
         public static string GetImageProcessorUrl(
             this IPublishedContent mediaItem,
             int? width = null,
@@ -18,12 +23,14 @@ namespace ImageCropper.ImageProcessor
             string imageCropperCropId = null,
             string furtherOptions = null,
             bool slimmage = false)
-        {
+        {            
             string imageCropperValue = null;
-            if (imageCropperAlias != null && mediaItem.HasProperty(imageCropperAlias) && mediaItem.HasValue(imageCropperAlias))
+
+            if (Cropper.HasPropertyValueDoubleCheck(mediaItem, imageCropperAlias))
             {
-                imageCropperValue = mediaItem.GetPropertyValue<string>(imageCropperAlias);
+                imageCropperValue = Cropper.GetPropertyValueHack(mediaItem, imageCropperAlias);
             }
+
             return mediaItem != null ? GetImageResizerUrl(mediaItem.Url, width, height, quality, mode, anchor, imageCropperValue, imageCropperCropId, furtherOptions, slimmage) : string.Empty;
         }
 

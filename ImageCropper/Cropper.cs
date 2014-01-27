@@ -1,7 +1,12 @@
 ﻿namespace ImageCropper
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
+
+    using global::Umbraco.Core.Logging;
+    using global::Umbraco.Core.Models;
+    using global::Umbraco.Web;
 
     using Newtonsoft.Json;
 
@@ -47,5 +52,50 @@
             }
             return imageCrops;
         }
+
+        internal static bool HasPropertyValueDoubleCheck(IPublishedContent publishedContent, string propertyAlias)
+        {            
+            try
+            {
+                if (propertyAlias != null && publishedContent.HasProperty(propertyAlias)
+                    && publishedContent.HasValue(propertyAlias))
+                {
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Warn<IPublishedContent>("Media cache is not happy - http://issues.umbraco.org/issue/U4-4146");
+                var cropsProperty = publishedContent.Properties.FirstOrDefault(x => x.PropertyTypeAlias == propertyAlias);
+                if (cropsProperty != null && !string.IsNullOrEmpty(cropsProperty.Value.ToString()))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        internal static string GetPropertyValueHack(IPublishedContent publishedContent, string propertyAlias)
+        {
+            string propertyValue = null;
+            try
+            {
+                if (propertyAlias != null && publishedContent.HasProperty(propertyAlias)
+                    && publishedContent.HasValue(propertyAlias))
+                {
+                    propertyValue = publishedContent.GetPropertyValue<string>(propertyAlias);
+                }
+            }
+            catch (Exception ex)
+            {
+                var cropsProperty = publishedContent.Properties.FirstOrDefault(x => x.PropertyTypeAlias == propertyAlias);
+                if (cropsProperty != null)
+                {
+                    propertyValue = cropsProperty.Value.ToString();
+                }
+            }
+            return propertyValue;
+        }
+
     }
 }

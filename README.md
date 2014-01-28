@@ -77,29 +77,35 @@ Add `@using ImageCropper.ImageProcessor` at the top of your view
 
 For a manual crop, with a propertyAlias of "imageCrop" and a cropId of "mainCrop"
 
-    @if (caseStudyImage.HasPropertyAndValue("imageCrop"))
-	{
-	<img src="@caseStudyImage.GetImageProcessorUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
-	} 
+	@{
+	    var featureImage = Umbraco.TypedMedia(1082);
+	    if (featureImage.HasPropertyAndValue("imageCrop"))
+	    {
+	        <img src="@featureImage.GetImageProcessorUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
+	    }
+	}   
 
 To enable Slimmage for adaptive width (ensure slimmage.min.js is included in your View)
 
-    <img src="@caseStudyImage.GetImageProcessorUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop", slimmage:true)" />  
+    <img src="@featureImage.GetImageProcessorUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop", slimmage:true)" />  
 
-**ImageResizer**
+**ImageResizer** - further documentation [here](docs/ImageResizer.md)
 
 Add `@using ImageCropper.ImageResizer` at the top of your view
 
 For a manual crop, with a propertyAlias of "imageCrop" and a cropId of "mainCrop"
-
-    @if (caseStudyImage.HasPropertyAndValue("imageCrop"))
-	{
-	<img src="@caseStudyImage.GetImageResizerUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
-	}
+	
+	@{
+	    var featureImage = Umbraco.TypedMedia(1082);
+	    if (featureImage.HasPropertyAndValue("imageCrop"))
+	    {
+	        <img src="@featureImage.GetImageResizerUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
+	    }
+	}     
 
 To enable Slimmage for adaptive width (ensure slimmage.min.js is included in your View)
 
-    <img src="@caseStudyImage.GetImageResizerUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop", slimmage:true)" />
+    <img src="@featureImage.GetImageResizerUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop", slimmage:true)" />
 
 **ImageGen**
 
@@ -107,14 +113,17 @@ Add `@using ImageCropper.ImageGen` at the top of your view
 
 For a manual crop, with a propertyAlias of "imageCrop" and a cropId of "mainCrop"
 
-    @if (caseStudyImage.HasPropertyAndValue("imageCrop"))
-	{
-	<img src="@caseStudyImage.GetImageGenUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
-	} 
+	@{
+	    var featureImage = Umbraco.TypedMedia(1082);
+	    if (featureImage.HasPropertyAndValue("imageCrop"))
+	    {
+	        <img src="@featureImage.GetImageGenUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
+	    }
+	}     
 
 To enable Slimmage for adaptive width (ensure slimmage.min.js is included in your View)
 
-    <img src="@caseStudyImage.GetImageGenUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop", slimmage:true)" />
+    <img src="@featureImage.GetImageGenUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop", slimmage:true)" />
 
 Disclaimers
 ===========

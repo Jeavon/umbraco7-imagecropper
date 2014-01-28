@@ -1,16 +1,21 @@
 Image Cropper Property Editor
 ============================================
 
-The Image Cropper property editor allows backoffice users to position pre-defined image crops on media items.
-Using ImageProcessor, ImageResizer or ImageGen the images are manipulated on-the-fly.
+As well as the Cropper iteself, this package includes easy to use extension methods for all three image processors and also Slimmage/Slimresponse for easy implementation using any of the processors.
+
+Umbraco v7.1 is planned to include a Image Cropper as standard so this package may become obsolete :)
+
+Alpha release, there will probably be errors.
 
 Requirements
 ============
 1. Umbraco 7.0.2
-2. **[ImageProcessor.Web](http://our.umbraco.org/projects/collaboration/imageprocessor)** or **[ImageResizer](http://our.umbraco.org//projects/developer-tools/imageresizer)** by Imageresizing.net or **[ImageGen](http://our.umbraco.org/projects/website-utilities/imagegen)**
+2. **[ImageProcessor.Web](http://our.umbraco.org/projects/collaboration/imageprocessor)** or **[ImageResizer](http://our.umbraco.org/projects/developer-tools/imageresizer)** by Imageresizing.net or **[ImageGen](http://our.umbraco.org/projects/website-utilities/imagegen)**
 
-Test Sites
+Source Code Test Sites
 ============
+There is a test site for each image processor.
+
 username: admim, password: password
 
 **Running in WebMatrix** you need to copy the **App_Plugins** folder from the **ImageCropper** folder into the **TestSite** folder before running.
@@ -23,15 +28,14 @@ Package Installation
 3. Clear your browser cache (otherwise you will get JS errors)
 3. Create a new data type of type "Image Cropper" in the "Developer" section in the Umbraco backoffice.
 4. Add the predefined crops settings.
-5. Configure the crop coordinates and preview urls (see below)
+5. Configure the crop coordinates and preview urls for your image processor (see processor documentation links)
 5. Assign the data type to an image mediatype in the "Settings" section of the Umbraco backoffice.
 6. Add some media items and set the crops
 7. Use the extension class to display the crops you have made in the property editor.
 
 Installation video (shows how to resolve below issue also!)
  
-[
-http://www.screenr.com/NV8N](http://www.screenr.com/NV8N)
+[http://www.screenr.com/NV8N](http://www.screenr.com/NV8N)
 
 **Known issue:**
 
@@ -44,88 +48,29 @@ To fully resolve the issue stop your application and delete all Examine Indexes 
 There is an Umbraco issue logged for this [http://issues.umbraco.org/issue/U4-4129 ](http://issues.umbraco.org/issue/U4-4129)
 
 
-Processor Urls
-===========
-**ImageProcessor**
-
-Crop coordinates format: `{x1},{y1},{width},{height}`
-
-Preview url format: `{mainimageurl}?crop={x1},{y1},{width},{height}&width={cropwidth}&quality={compression}`
-
-**ImageResizer**
-
-Crop coordinates format: `{x1},{y1},{x2},{y2}`
-
-Preview url format: `{mainimageurl}?crop=({x1},{y1},{x2},{y2})&width={cropwidth}&quality={compression}&cache=no`
-
-**ImageGen**
-
-Crop coordinates format: `{x1},{y1},{width},{height}`
-
-Preview url format: `/imagegen.ashx?image={mainimageurl}&crop={x1},{y1},{width},{height}&width={cropwidth}&quality={compression}&nocache=true`
-
-Razor Samples
+Processor documentation
 ===========
 
 There are extension methods for each processor included in the package for use with the cropper or standalone.
 
+**ImageProcessor** - documentation [here](https://github.com/Jeavon/umbraco7-imagecropper/blob/master/Docs/ImageProcessor.md)
+
+
+**ImageResizer** - documentation [here](https://github.com/Jeavon/umbraco7-imagecropper/blob/master/Docs/ImageResizer.md)
+
+
+**ImageGen** - documentation [here](https://github.com/Jeavon/umbraco7-imagecropper/blob/master/Docs/ImageGen.md)
+
+Videos
+===========
 Video showing how to enable Slimmage [http://www.screenr.com/2V8N](http://www.screenr.com/2V8N)
 
-**ImageProcessor**
 
-Add `@using ImageCropper.ImageProcessor` at the top of your view
-
-For a manual crop, with a propertyAlias of "imageCrop" and a cropId of "mainCrop"
-
-	@{
-	    var featureImage = Umbraco.TypedMedia(1082);
-	    if (featureImage.HasPropertyAndValue("imageCrop"))
-	    {
-	        <img src="@featureImage.GetImageProcessorUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
-	    }
-	}   
-
-To enable Slimmage for adaptive width (ensure slimmage.min.js is included in your View)
-
-    <img src="@featureImage.GetImageProcessorUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop", slimmage:true)" />  
-
-**ImageResizer** - further documentation [here](https://github.com/Jeavon/umbraco7-imagecropper/blob/master/Docs/ImageResizer.md)
-
-Add `@using ImageCropper.ImageResizer` at the top of your view
-
-For a manual crop, with a propertyAlias of "imageCrop" and a cropId of "mainCrop"
-	
-	@{
-	    var featureImage = Umbraco.TypedMedia(1082);
-	    if (featureImage.HasPropertyAndValue("imageCrop"))
-	    {
-	        <img src="@featureImage.GetImageResizerUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
-	    }
-	}     
-
-To enable Slimmage for adaptive width (ensure slimmage.min.js is included in your View)
-
-    <img src="@featureImage.GetImageResizerUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop", slimmage:true)" />
-
-**ImageGen**
-
-Add `@using ImageCropper.ImageGen` at the top of your view
-
-For a manual crop, with a propertyAlias of "imageCrop" and a cropId of "mainCrop"
-
-	@{
-	    var featureImage = Umbraco.TypedMedia(1082);
-	    if (featureImage.HasPropertyAndValue("imageCrop"))
-	    {
-	        <img src="@featureImage.GetImageGenUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
-	    }
-	}     
-
-To enable Slimmage for adaptive width (ensure slimmage.min.js is included in your View)
-
-    <img src="@featureImage.GetImageGenUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop", slimmage:true)" />
-
-Disclaimers
+Credits and licenses
 ===========
 
-Alpha release, there will probably be errors.
+Joost van den Berg who created the original v7 Angluar JS image cropper upon which this package is based.
+
+Warren Buckley who created the UmbracoExtensionMethods from which the ImageGen extension method is derived.
+
+Nathanael Jones who created both Slimmage and SlimResponse which are included in the package. Both project are MIT/Apache dual licensed by Imazen.

@@ -76,7 +76,7 @@ angular.module("umbraco").controller("ImageCropper",
             destroyJcrop();
             $scope.resizeimageheight = 0;
             $scope.resizeimagewidth = 0;
-
+            $scope.warning = "";
             loadScale();
         }
 
@@ -85,7 +85,7 @@ angular.module("umbraco").controller("ImageCropper",
         };
 
         function selectorclick() {
-            
+
             if ($scope.cropsetting != null) {
                 destroyJcrop();
                 var w = $scope.cropsetting.width;
@@ -93,74 +93,81 @@ angular.module("umbraco").controller("ImageCropper",
 
                 var srcw = $scope.mainimagewidth;
                 var srch = $scope.mainimageheight;
-
-                if ((w <= srcw) && (h <= srch)) {
-                    
-                    var x1 = 0, y1 = 0, x2 = 0, y2 = 0, croppedWidth = 0;
-                    for (i = 0; i < $scope.model.value.length; i++) {
-                        if ($scope.model.value[i].id === $scope.cropsetting.id) {
-                            x1 = $scope.model.value[i].x1;
-                            x2 = $scope.model.value[i].x2;
-                            y1 = $scope.model.value[i].y1;
-                            y2 = $scope.model.value[i].y2;
-                            croppedWidth = $scope.model.value[i].resizewidth;
-                        }
-                        
-                    }
-
-                    if (croppedWidth > 0) {
-                        var newheight = Math.round(croppedWidth / $scope.mainimageratio);
-
-                        removeCurrent();
-
-                        $scope.resizeimagewidth = croppedWidth;
-                        $scope.resizeimageheight = newheight;
-
-                       
-
-
-                        $('#mainimage').attr("title", "width:" + croppedWidth + "px - height:" + newheight + "px");
-
-                        checkWidth();
-
-                        function checkWidth() {
                             
-                            if ($('#mainimage').width() !== croppedWidth) {
-                                $('#mainimage').attr("style", "width:" + croppedWidth + "px; height:" + newheight + "px");
-                                setTimeout(checkWidth, 100);
-                                return false;
-                            } else {
-                                return true;
+                    if ((w <= srcw) && (h <= srch)) {
+
+                        var x1 = 0, y1 = 0, x2 = 0, y2 = 0, croppedWidth = 0;
+                        for (i = 0; i < $scope.model.value.length; i++) {
+                            if ($scope.model.value[i].id === $scope.cropsetting.id) {
+                                x1 = $scope.model.value[i].x1;
+                                x2 = $scope.model.value[i].x2;
+                                y1 = $scope.model.value[i].y1;
+                                y2 = $scope.model.value[i].y2;
+                                croppedWidth = $scope.model.value[i].resizewidth;
                             }
+
                         }
 
+                        if (croppedWidth > 0) {
+                            var newheight = Math.round(croppedWidth / $scope.mainimageratio);
+
+                            removeCurrent();
+
+                            $scope.resizeimagewidth = croppedWidth;
+                            $scope.resizeimageheight = newheight;
+
+
+                            $('#mainimage').attr("title", "width:" + croppedWidth + "px - height:" + newheight + "px");
+
+                            checkWidth();
+
+                            function checkWidth() {
+
+                                if ($('#mainimage').width() !== croppedWidth) {
+                                    $('#mainimage').attr("style", "width:" + croppedWidth + "px; height:" + newheight + "px");
+                                    setTimeout(checkWidth, 100);
+                                    return false;
+                                } else {
+                                    return true;
+                                }
+                            }
+
+                        } else {
+                            //set width and height to scaled size
+                            waitScale();
+
+                            function waitScale() {
+                                if ($('#mainimage').width() !== $scope.resizeimagewidth) {
+                                    $('#mainimage').attr("style", "width:" + $scope.resizeimagewidth + "px; height:" + $scope.resizeimageheight + "px");
+                                    setTimeout(waitScale, 100);
+                                    return false;
+                                } else {
+                                    return true;
+                                }
+                            }
+
+                        }
+
+                        var scaledWidth = $scope.resizeimagewidth;
+                        if (w > scaledWidth) {
+                            $scope.warning = "Crop doesn't fit please scale upwards to crop.";
+                        } else {
+                            createJcrop(w, h);
+
+                            if (x1 != 0) {
+                                jcrop_api.animateTo([x1, y1, x2, y2]);
+                            }
+                            $scope.warning = "";
+                        }
+
+                        updPreview();
                     } else {
-                        //set width and height to scaled size
-                        waitScale();
-                        function waitScale() {
-                            if ($('#mainimage').width() !== $scope.resizeimagewidth) {
-                                $('#mainimage').attr("style", "width:" + $scope.resizeimagewidth + "px; height:" + $scope.resizeimageheight + "px");
-                                setTimeout(waitScale, 100);
-                                return false;
-                            } else {
-                                return true;
-                            }
-                        }
+                        $scope.warning = "Crop width or height does not fit..";
                     }
 
-                    createJcrop(w, h);
+            
 
-                    if (x1 != 0) {
-                        jcrop_api.animateTo([x1, y1, x2, y2]);
-                    }
-
-                    updPreview();
-                }
-                else {
-                    $scope.info = "Crop width or height does not fit..";
-                }
-
-            }
+        }
             else {
                 destroyJcrop();
             }

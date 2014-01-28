@@ -89,7 +89,7 @@ To enable Slimmage for adaptive width (ensure slimmage.min.js is included in you
 
     <img src="@featureImage.GetImageProcessorUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop", slimmage:true)" />  
 
-**ImageResizer** - further documentation [here](docs/ImageResizer.md)
+**ImageResizer** - further documentation [here](https://github.com/Jeavon/umbraco7-imagecropper/blob/master/Docs/ImageResizer.md)
 
 Add `@using ImageCropper.ImageResizer` at the top of your view
 

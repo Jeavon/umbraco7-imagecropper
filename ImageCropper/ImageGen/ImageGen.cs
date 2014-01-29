@@ -89,14 +89,14 @@ namespace ImageCropper.ImageGen
             bool slimmage = false)
         {
             string imageCropperValue = null;
-            if (mediaItem.HasPropertyAndValue(imageCropperAlias))
+            if (mediaItem.HasPropertyAndValueAndCrop(imageCropperAlias, imageCropperCropId))
             {
                 imageCropperValue = mediaItem.GetPropertyValueHack(imageCropperAlias);
             }
-            return mediaItem != null ? GetImageResizerUrl(mediaItem.Url, width, height, quality, align, allowUpsizing, antiAlias, border, borderColor, colorMode, constrain, flip, fontSize, fontStyle, font, fontColor, format, lineHeight, maxHeight, maxWidth, noCache, overlayMargin, pad, rotate, transparent, vAlign, altImage, bgColor, overlayImage, text, imageCropperValue, imageCropperCropId, furtherOptions, slimmage) : string.Empty;
+            return mediaItem != null ? GetImageGenUrl(mediaItem.Url, width, height, quality, align, allowUpsizing, antiAlias, border, borderColor, colorMode, constrain, flip, fontSize, fontStyle, font, fontColor, format, lineHeight, maxHeight, maxWidth, noCache, overlayMargin, pad, rotate, transparent, vAlign, altImage, bgColor, overlayImage, text, imageCropperValue, imageCropperCropId, furtherOptions, slimmage) : string.Empty;
         }
 
-        public static string GetImageResizerUrl(
+        public static string GetImageGenUrl(
             this string imageUrl,
             int? width = null,
             int? height = null,

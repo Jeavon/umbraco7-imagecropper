@@ -26,15 +26,15 @@ namespace ImageCropper.ImageProcessor
         {            
             string imageCropperValue = null;
 
-            if (mediaItem.HasPropertyAndValue(imageCropperAlias))
+            if (mediaItem.HasPropertyAndValueAndCrop(imageCropperAlias,imageCropperCropId))
             {
                 imageCropperValue = mediaItem.GetPropertyValueHack(imageCropperAlias);
             }
 
-            return mediaItem != null ? GetImageResizerUrl(mediaItem.Url, width, height, quality, mode, anchor, imageCropperValue, imageCropperCropId, furtherOptions, slimmage) : string.Empty;
+            return mediaItem != null ? GetImageProcessorUrl(mediaItem.Url, width, height, quality, mode, anchor, imageCropperValue, imageCropperCropId, furtherOptions, slimmage) : string.Empty;
         }
 
-        public static string GetImageResizerUrl(
+        public static string GetImageProcessorUrl(
             this string imageUrl,
             int? width = null,
             int? height = null,

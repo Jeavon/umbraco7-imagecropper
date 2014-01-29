@@ -26,7 +26,7 @@ namespace ImageCropper.ImageResizer
         {
             string imageCropperValue = null;
 
-            if (mediaItem.HasPropertyAndValue(imageCropperAlias))
+            if (mediaItem.HasPropertyAndValueAndCrop(imageCropperAlias,imageCropperCropId))
             {
                 imageCropperValue = mediaItem.GetPropertyValueHack(imageCropperAlias);
             }

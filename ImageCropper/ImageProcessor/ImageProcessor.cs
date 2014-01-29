@@ -7,9 +7,9 @@ namespace ImageCropper.ImageProcessor
 {
     public static class ImageProcessor
     {
-        public static bool HasPropertyAndValue(this IPublishedContent publishedContent, string propertyAlias)
+        public static bool HasCrop(this IPublishedContent publishedContent, string propertyAlias, string cropId)
         {
-            return Cropper.HasPropertyAndValue(publishedContent, propertyAlias);
+            return publishedContent.HasPropertyAndValueAndCrop(propertyAlias, cropId);
         }
 
         public static string GetImageProcessorUrl(

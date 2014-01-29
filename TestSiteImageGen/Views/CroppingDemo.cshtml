@@ -30,7 +30,7 @@
         {
             <h2 class="major"></h2>
             <div style="width:80%">                
-                @if (caseStudyImage.HasPropertyAndValue("imageCrop"))
+                @if (caseStudyImage.HasCrop("imageCrop", "MainCrop"))
                 {
                 @*<pre>@(caseStudyImage.GetPropertyValue<string>("imageCrop"))</pre>*@
                     <h3 class="major">Manual Crop</h3>

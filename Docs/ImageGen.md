@@ -59,7 +59,7 @@ Example using strongly typed IPublishedContent
 	@using ImageCropper.ImageGen
     @{
         var featureImage = Umbraco.TypedMedia(1082);
-        if (featureImage.HasPropertyAndValue("imageCrop"))
+	    if (featureImage.HasCrop("imageCrop", "MainCrop"))
         {
             <img src="@featureImage.GetImageGenUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
         }
@@ -75,7 +75,7 @@ Example using dynamic IPublishedContent
 	@using ImageCropper.ImageGen
     @{
         var featureImage = Umbraco.Media(1082);
-        if (ImageResizer.HasPropertyAndValue(featureImage, "imageCrop"))
+	    if (ImageResizer.HasCrop(featureImage, "imageCrop", "MainCrop"))
         {
             <img src="@ImageResizer.GetImageGenUrl(featureImage, width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
         }

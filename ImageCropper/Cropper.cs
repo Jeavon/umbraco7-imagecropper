@@ -86,6 +86,61 @@
             return false;
         }
 
+        internal static bool HasPropertyAndValueAndCrop(this IPublishedContent publishedContent, string propertyAlias, string cropId)
+        {
+            try
+            {
+                if (propertyAlias != null && publishedContent.HasProperty(propertyAlias)
+                    && publishedContent.HasValue(propertyAlias))
+                {
+                    var propertyAliasValue = publishedContent.GetPropertyValue<string>(propertyAlias);
+                    if (propertyAliasValue.IsJson() && propertyAliasValue.Length <= 2)
+                    {
+                        return false;
+                    }
+                    var allTheCrops = propertyAliasValue.GetImageCrops();
+                    if (allTheCrops != null && allTheCrops.Any())
+                    {
+                        var crop = cropId != null
+                                       ? allTheCrops.Find(x => x.Id == cropId)
+                                       : allTheCrops.First();
+                        if (crop != null)
+                        {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Warn<IPublishedContent>("The cache unicorn is not happy with node id: " + publishedContent.Id + " - http://issues.umbraco.org/issue/U4-4146");
+                var cropsProperty = publishedContent.Properties.FirstOrDefault(x => x.PropertyTypeAlias == propertyAlias);
+
+                if (cropsProperty != null && !string.IsNullOrEmpty(cropsProperty.Value.ToString()))
+                {
+                    var propertyAliasValue = cropsProperty.Value.ToString();
+                    if (propertyAliasValue.IsJson() && propertyAliasValue.Length <= 2)
+                    {
+                        return false;
+                    }
+                    var allTheCrops = propertyAliasValue.GetImageCrops();
+                    if (allTheCrops != null && allTheCrops.Any())
+                    {
+                        var crop = cropId != null
+                                       ? allTheCrops.Find(x => x.Id == cropId)
+                                       : allTheCrops.First();
+                        if (crop != null)
+                        {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+            }
+            return false;
+        }
+
         internal static string GetPropertyValueHack(this IPublishedContent publishedContent, string propertyAlias)
         {
             string propertyValue = null;

@@ -41,7 +41,7 @@ Installation video (shows how to resolve below issue also!)
 
 If you add a cropper property (or any additional property) to an existing media type and try to use it you may get a YSOD.
 
-We have added a extension method `.HasPropertyAndValue("propertyAlias")` which will attempt to workaround the issue automatically.  It is also useful as it will check for empty Json values where the crops have been removed and return false where a normal HasValue would have returned true.
+We have added a useful extension method `.HasCrop("propertyAlias","cropID")` to check if the crop has been created, this method will also attempt to workaround the issue automatically.
 
 To fully resolve the issue stop your application and delete all Examine Indexes (all sub folders within \App_Data\TEMP\ExamineIndexes), start up again and it should now be ok, this will fully recreate the media cache.
 

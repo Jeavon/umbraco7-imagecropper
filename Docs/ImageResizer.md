@@ -35,15 +35,15 @@ Example using strongly typed IPublishedContent
 
 	@using ImageCropper.ImageResizer
     @{
-        var featureImage = Umbraco.TypedMedia(1082);
-        if (featureImage.HasPropertyAndValue("imageCrop"))
-        {
-            <img src="@featureImage.GetImageResizerUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
-        }
-        else
-        {
-            <img src="@featureImage.GetImageResizerUrl(width: 300, mode:ImageResizer.Mode.Crop, anchor:ImageResizer.Anchor.TopLeft)" />
-        }
+	    var featureImage = Umbraco.TypedMedia(1082);
+	    if (featureImage.HasCrop("imageCrop", "MainCrop"))
+	    {
+	        <img src="@featureImage.GetImageResizerUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
+	    }
+	    else
+	    {
+	        <img src="@featureImage.GetImageResizerUrl(width: 300, mode:ImageResizer.Mode.Crop, anchor:ImageResizer.Anchor.TopLeft)" />
+	    }
     }      
 
 
@@ -51,15 +51,15 @@ Example using dynamic IPublishedContent
 
 	@using ImageCropper.ImageResizer
     @{
-        var featureImage = Umbraco.Media(1082);
-        if (ImageResizer.HasPropertyAndValue(featureImage, "imageCrop"))
-        {
-            <img src="@ImageResizer.GetImageResizerUrl(featureImage, width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
-        }
-        else
-        {
-            <img src="@ImageResizer.GetImageResizerUrl(featureImage, width: 300, mode:ImageResizer.Mode.Crop, anchor:ImageResizer.Anchor.TopLeft)" />
-        }
+	    var featureImage = Umbraco.Media(1082);
+	    if (ImageResizer.HasCrop(featureImage, "imageCrop", "MainCrop"))
+	    {
+	        <img src="@ImageResizer.GetImageResizerUrl(featureImage, width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
+	    }
+	    else
+	    {
+	        <img src="@ImageResizer.GetImageResizerUrl(featureImage, width: 300, mode:ImageResizer.Mode.Crop, anchor:ImageResizer.Anchor.TopLeft)" />
+	    }
     }   
 
 To enable Slimmage for adaptive width (ensure slimmage.min.js is included in your View)

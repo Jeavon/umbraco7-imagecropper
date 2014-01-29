@@ -30,21 +30,32 @@
         {
             <h2 class="major"></h2>
             <div style="width:80%">                
-                @if (caseStudyImage.HasPropertyAndValue("imageCrop"))
-                {
-                @*<pre>@(caseStudyImage.GetPropertyValue<string>("imageCrop"))</pre>*@
-                    <h3 class="major">Manual Crop</h3>
-                    <img src="@caseStudyImage.GetImageResizerUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
-                    <h3>Manual Crop + Slimmage</h3>
-                    <img src="@caseStudyImage.GetImageResizerUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop", slimmage: true)" style="max-width: 100%" />
-                }
-                else
-                {
-                    <h3>No Crop defined - lets go auto</h3>
-                    <img src="@caseStudyImage.GetImageResizerUrl(width: 300, mode:ImageResizer.Mode.Crop, anchor:ImageResizer.Anchor.TopLeft)" />
-                }         
-                <h3>Autocropped from top left</h3>
-                <img src="@caseStudyImage.GetImageResizerUrl(width: 300, height:300, mode: ImageResizer.Mode.Crop, anchor:ImageResizer.Anchor.TopLeft )" />                
+
+@{
+    var featureImage = Umbraco.TypedMedia(caseStudyImage.Id);
+    if (featureImage.HasCrop("imageCrop", "MainCrop"))
+    {
+        <img src="@featureImage.GetImageResizerUrl(width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
+    }
+    else
+    {
+        <img src="@featureImage.GetImageResizerUrl(width: 300, mode: ImageResizer.Mode.Crop, anchor: ImageResizer.Anchor.TopLeft)" />
+    }
+}    
+                
+                
+@{
+    var featureImageDyn = Umbraco.Media(caseStudyImage.Id);
+    if (ImageResizer.HasCrop(featureImageDyn, "imageCrop", "MainCrop"))
+    {
+            <img src="@ImageResizer.GetImageResizerUrl(featureImageDyn, width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
+    }
+    else
+    {
+            <img src="@ImageResizer.GetImageResizerUrl(featureImageDyn, width: 300, mode: ImageResizer.Mode.Crop, anchor: ImageResizer.Anchor.TopLeft)" />
+    }
+}                                   
+           
             </div>
         }
     }

@@ -65,7 +65,7 @@ Example using strongly typed IPublishedContent
         }
         else
         {
-            <img src="@featureImage.GetImageGenUrl()" />
+            <img src="@featureImage.GetImageGenUrl(300, align:ImageGen.Align.Near, vAlign:ImageGen.VAlign.Top)" />
         }
     }      
 
@@ -75,13 +75,13 @@ Example using dynamic IPublishedContent
 	@using ImageCropper.ImageGen
     @{
         var featureImage = Umbraco.Media(1082);
-	    if (ImageResizer.HasCrop(featureImage, "imageCrop", "MainCrop"))
+	    if (ImageGen.HasCrop(featureImage, "imageCrop", "MainCrop"))
         {
-            <img src="@ImageResizer.GetImageGenUrl(featureImage, width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
+            <img src="@ImageGen.GetImageGenUrl(featureImage, width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
         }
         else
         {
-            <img src="@ImageResizer.GetImageGenUrl()" />
+            <img src="@ImageGen.GetImageGenUrl(300, align:ImageGen.Align.Near, vAlign:ImageGen.VAlign.Top)" />
         }
     }   
 

@@ -51,13 +51,13 @@ Example using dynamic IPublishedContent
 	@using ImageCropper.ImageProcessor
     @{
         var featureImage = Umbraco.Media(1082);
-	    if (ImageResizer.HasCrop(featureImage, "imageCrop", "MainCrop"))
+	    if (ImageProcessor.HasCrop(featureImage, "imageCrop", "MainCrop"))
         {
-            <img src="@ImageResizer.GetImageProcessorUrl(featureImage, width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
+            <img src="@ImageProcessor.GetImageProcessorUrl(featureImage, width: 300, imageCropperAlias: "imageCrop", imageCropperCropId: "MainCrop")" />
         }
         else
         {
-            <img src="@ImageResizer.GetImageProcessorUrl(width: 300, mode: ImageProcessor.Mode.Crop, anchor: ImageProcessor.Anchor.Top)" />
+            <img src="@ImageProcessor.GetImageProcessorUrl(width: 300, mode: ImageProcessor.Mode.Crop, anchor: ImageProcessor.Anchor.Top)" />
         }
     }   
 

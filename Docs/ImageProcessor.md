@@ -41,7 +41,7 @@ Example using strongly typed IPublishedContent
         }
         else
         {
-            <img src="@featureImage.GetImageProcessorUrl(width: 300, mode:ImageResizer.Mode.Crop, anchor:ImageResizer.Anchor.TopLeft)" />
+            <img src="@featureImage.GetImageProcessorUrl(width: 300, mode: ImageProcessor.Mode.Crop, anchor: ImageProcessor.Anchor.Top)" />
         }
     }      
 
@@ -57,7 +57,7 @@ Example using dynamic IPublishedContent
         }
         else
         {
-            <img src="@ImageResizer.GetImageProcessorUrl(featureImage, width: 300, mode:ImageResizer.Mode.Crop, anchor:ImageResizer.Anchor.TopLeft)" />
+            <img src="@ImageResizer.GetImageProcessorUrl(width: 300, mode: ImageProcessor.Mode.Crop, anchor: ImageProcessor.Anchor.Top)" />
         }
     }   
 

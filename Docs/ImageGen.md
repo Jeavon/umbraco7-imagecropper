@@ -65,7 +65,7 @@ Example using strongly typed IPublishedContent
         }
         else
         {
-            <img src="@featureImage.GetImageGenUrl(width: 300, mode:ImageResizer.Mode.Crop, anchor:ImageResizer.Anchor.TopLeft)" />
+            <img src="@featureImage.GetImageGenUrl()" />
         }
     }      
 
@@ -81,7 +81,7 @@ Example using dynamic IPublishedContent
         }
         else
         {
-            <img src="@ImageResizer.GetImageGenUrl(featureImage, width: 300, mode:ImageResizer.Mode.Crop, anchor:ImageResizer.Anchor.TopLeft)" />
+            <img src="@ImageResizer.GetImageGenUrl()" />
         }
     }   
 

@@ -233,16 +233,28 @@ angular.module("umbraco").controller("ImageCropper",
                 cWidth = $(".umb-panel-body").width() - 300,
                 cHeight = $(window).height() - 300;
 
+            console.log("cWidth = " + cWidth + ", cHeight = " + cHeight + ", Image Width = " + $scope.mainimagewidth + ", Image Height = " + $scope.mainimageheight);
+
             if ($scope.mainimagewidth >= $scope.mainimageheight) {
+                
 
                 if ($scope.mainimagewidth > cWidth) {
+                    
                     setWidth();
+                } else {
+                    
+                    setHeight();
                 }
 
             } else if ($scope.mainimagewidth < $scope.mainimageheight) {
+                
 
                 if ($scope.mainimageheight > cHeight) {
+                    
                     setHeight();
+                } else {
+                    
+                    setWidth();
                 }
 
             }
@@ -255,13 +267,16 @@ angular.module("umbraco").controller("ImageCropper",
                     h = Math.round(p * ratio),
                     w = 0;
 
-                if (h > cHeight) {
+                if (h >= cHeight) {
+                    
                     var perc = Math.abs((cHeight / h * 100));
                     h = Math.round(perc / 100 * h);
                     w = Math.round(h / ratio);
                     $('#mainimage').css("height", h); // Needed to overrite css height rule
                 } else {
+                    
                     w = z / 100 * y;
+                    $('#mainimage').css("height", h); // Needed to overrite css height rule
                 }
 
 

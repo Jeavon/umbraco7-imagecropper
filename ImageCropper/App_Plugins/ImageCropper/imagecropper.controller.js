@@ -228,35 +228,25 @@ angular.module("umbraco").controller("ImageCropper",
         }
 
         function loadScale() {
-
             var ratio = $scope.mainimageheight / $scope.mainimagewidth,
                 cWidth = $(".umb-panel-body").width() - 300,
                 cHeight = $(window).height() - 300;
-
-            console.log("cWidth = " + cWidth + ", cHeight = " + cHeight + ", Image Width = " + $scope.mainimagewidth + ", Image Height = " + $scope.mainimageheight);
-
             if ($scope.mainimagewidth >= $scope.mainimageheight) {
                 
-
-                if ($scope.mainimagewidth > cWidth) {
-                    
+                if ($scope.mainimagewidth > cWidth) {                    
                     setWidth();
                 } else {
                     
                     setHeight();
                 }
-
             } else if ($scope.mainimagewidth < $scope.mainimageheight) {
                 
-
-                if ($scope.mainimageheight > cHeight) {
-                    
+                if ($scope.mainimageheight > cHeight) {                    
                     setHeight();
                 } else {
                     
                     setWidth();
                 }
-
             }
 
             function setWidth() {
@@ -273,12 +263,10 @@ angular.module("umbraco").controller("ImageCropper",
                     h = Math.round(perc / 100 * h);
                     w = Math.round(h / ratio);
                     $('#mainimage').css("height", h); // Needed to overrite css height rule
-                } else {
-                    
+                } else {                    
                     w = z / 100 * y;
                     $('#mainimage').css("height", h); // Needed to overrite css height rule
                 }
-
 
                 $scope.resizeimagewidth = w;
             };
@@ -290,7 +278,6 @@ angular.module("umbraco").controller("ImageCropper",
                     p = Math.round((z / 100 * y) - 100),
                     w = Math.round(p / ratio);
 
-
                 $('#mainimage').css("height", p); // Needed to overrite css height rule
 
                 $scope.resizeimagewidth = w;
@@ -301,7 +288,6 @@ angular.module("umbraco").controller("ImageCropper",
         if (!angular.isArray($scope.model.value)) {
             $scope.model.value = [];
         }
-
 
         angular.extend(config, $scope.model.config);
         $scope.model.config = config;
@@ -348,10 +334,7 @@ angular.module("umbraco").controller("ImageCropper",
                 $scope.mainimageratio = $scope.mainimagewidth / $scope.mainimageheight;
                 $scope.mainimageurl = myMediaUrl;
 
-                loadScale();
-
-                
-
+                loadScale();                
             });
         });
 

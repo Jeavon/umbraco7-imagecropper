@@ -39,13 +39,13 @@ Installation video (shows how to resolve below issue also!)
 
 **Known issue:**
 
-If you add a cropper property (or any additional property) to an existing media type and try to use it you may get a YSOD.
+If you add a cropper property (or any additional property) to an existing media type and try to use it you may get a YSOD.  Make sure you save all media items which are using the media type you added the property to.
 
-We have added a useful extension method `.HasCrop("propertyAlias","cropID")` to check if the crop has been created, this method will also attempt to workaround the issue automatically.
+We have added a useful extension method `.HasCrop("propertyAlias","cropID")` to check if the crop has been created, using this method will handle the exception and log it to your log4net file.
 
-To fully resolve the issue stop your application and delete all Examine Indexes (all sub folders within \App_Data\TEMP\ExamineIndexes), start up again and it should now be ok, this will fully recreate the media cache.
+If you crops are still not showing after saving all items you will need to fully resolve the issue. To do this, stop your application and delete all Examine Indexes (all sub folders within \App_Data\TEMP\ExamineIndexes), start up again and it should now be ok, this will fully recreate the media cache.
 
-There is an Umbraco issue logged for this [http://issues.umbraco.org/issue/U4-4129 ](http://issues.umbraco.org/issue/U4-4129)
+There is an Umbraco issue logged for this and it should be resolved in v7.0.3 [http://issues.umbraco.org/issue/U4-4129 ](http://issues.umbraco.org/issue/U4-4129)
 
 
 Processor documentation
